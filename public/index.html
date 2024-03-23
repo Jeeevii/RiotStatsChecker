@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riot Stats Checker</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Riot Stats Checker</h1>
-    <button id="runScriptButton">Run Script</button>
-
-    <script>
-        document.getElementById('runScriptButton').addEventListener('click', async function() {
-            console.log("(HTML) Clicked! Sending and Receiving Data Now...");
-            const response = await fetch('/run-script');
-            const data = await response.text();
-            console.log("(HTML) Logging data from JavaScript into website console!");
-            console.log(data);
-        });
-    </script>
+    <div class="container">
+        <h1>Riot Stats Checker</h1>
+        <div class="input-container">
+            <label for="summonerName">Summoner Name:</label>
+            <input type="text" id="summonerName" name="summonerName" placeholder="Enter Name">
+        </div>
+        <div class="input-container">
+            <label for="summonerTag">Summoner Tag:</label>
+            <input type="text" id="summonerTag" name="summonerTag" placeholder="Enter Tag">
+        </div>
+        <button id="searchButton">Search</button>
+        <div id="tempOutput"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
