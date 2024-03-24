@@ -9,5 +9,5 @@ document.getElementById('searchButton').addEventListener('click', async function
     const data = await response.text();
     document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
     console.log("(HTML) Logging data from JavaScript into website console:");
-    console.log(data);
+    console.log(data[1]);
 });

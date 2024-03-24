@@ -12,11 +12,9 @@ app.get('/client-search', (req, res) => {
     // receiving data from script.js
     const summonerName = req.query.summonerName;
     const summonerTag = req.query.summonerTag;
-
     // sending data to apiserver.py
     console.log("(JavaScript) Sending data to back-end:", summonerName, summonerTag);
     const python_process = spawn('python', ['./back-end/apiserver.py', summonerName, summonerTag]);
-
     // receiving new data from apiserver.py
     python_process.stdout.on('data', (data) => {
         console.log("(JavaScript) Sending Python data to front-end:");
