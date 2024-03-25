@@ -41,6 +41,8 @@ if handle_error(summonerData) != 'OK':
   
 playerInfo = summonerData.json()
 iconID = playerInfo['profileIconId'] 
+summonerLevel = playerInfo['summonerLevel']
 
 print({"puuid": puuid, "iconID": str(iconID)})
+print("summonerLevel " + str(summonerLevel))
 sys.stdout.flush()

@@ -9,7 +9,7 @@ document.getElementById('searchButton').addEventListener('click', async function
     }    
 
     //Testing that change paging works, should be called at the end of the method
-    changePage('stats.html',summonerName,summonerTag);
+    //changePage('stats.html',summonerName,summonerTag);
 
     const url = `/client-search?summonerName=${encodeURIComponent(summonerName)}&summonerTag=${encodeURIComponent(summonerTag)}`; // location of httpserver.js
     console.log("(HTML) Clicked! Sending and Receiving Data Now...");
