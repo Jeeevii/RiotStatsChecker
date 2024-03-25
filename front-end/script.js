@@ -14,9 +14,8 @@ document.getElementById('searchButton').addEventListener('click', async function
     const response = await fetch(url); // sending GET request to client.js
     const data = await response.text();
 
-    const parsedHashmap = JSON.parse(data);
+    const parsedHashmap = JSON.parse(data); // parses python hashmap into an object (hashmap in js)
     console.log("(HTML) Logging data from JavaScript into website console:");
-    console.log(parsedHashmap);
     const iconID = parsedHashmap.iconID
     const puuID = parsedHashmap.puuid
     console.log("(HTML) parsed iconID and puuid: ", puuID, iconID);
