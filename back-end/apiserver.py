@@ -45,7 +45,7 @@ playerInfo = summonerData.json()
 iconID = playerInfo['profileIconId'] 
 SENDING_DATA_HASHMAP['iconID'] = iconID
 
-json_data = json.dumps(SENDING_DATA_HASHMAP)
+json_data = json.dumps(SENDING_DATA_HASHMAP) # converts data into json file to send
 print(json_data)
 
 sys.stdout.flush()
