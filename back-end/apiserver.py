@@ -43,6 +43,9 @@ if handle_error(summonerData) != 'OK':
   
 playerInfo = summonerData.json()
 iconID = playerInfo['profileIconId'] 
+SENDING_DATA_HASHMAP['iconID'] = iconID
 
-print({"puuid": puuid, "iconID": str(iconID)})
+json_data = json.dumps(SENDING_DATA_HASHMAP) # converts data into json file to send
+print(json_data)
+
 sys.stdout.flush()
