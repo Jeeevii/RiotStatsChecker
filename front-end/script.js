@@ -1,5 +1,3 @@
-
-
 document.getElementById('searchButton').addEventListener('click', async function() {
     const summonerName = document.getElementById('summonerName').value;
     const summonerTag = document.getElementById('summonerTag').value;
@@ -15,9 +13,14 @@ document.getElementById('searchButton').addEventListener('click', async function
     console.log("(HTML) Clicked! Sending and Receiving Data Now...");
     const response = await fetch(url); // sending GET request to client.js
     const data = await response.text();
-    document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
+
+    const parsedHashmap = JSON.parse(data);
     console.log("(HTML) Logging data from JavaScript into website console:");
-    console.log(data);
+    console.log(parsedHashmap);
+    const iconID = parsedHashmap.iconID
+    const puuID = parsedHashmap.puuid
+    console.log("(HTML) parsed iconID and puuid: ", puuID, iconID);
+    document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
 
     //Switch page at the end of getting data... 
     // changePage('stats.html',summonerName,summonerTag,data);
