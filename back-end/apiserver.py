@@ -19,6 +19,7 @@ def getPlayerIcon(request, puuid, key):
     new_request = request + puuid + '?api_key=' + key
     return requests.get(new_request)
 
+SENDING_DATA_HASHMAP = {}
 summoner, tag = sys.argv[1], sys.argv[2]
 api_key = 'RGAPI-b8f2c841-61f3-4f85-b525-1a1b00b43911'
 accountRequest = 'https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/' + summoner + '/' + tag + '?api_key=' + api_key
@@ -32,6 +33,7 @@ if handle_error(accountData) != 'OK':
 
 playerInfo = accountData.json()
 puuid = playerInfo['puuid']
+SENDING_DATA_HASHMAP['puuid'] = puuid
 
 # getting icon from puuid 
 summonerData = getPlayerIcon(summonerRequest, puuid, api_key)
@@ -41,6 +43,9 @@ if handle_error(summonerData) != 'OK':
   
 playerInfo = summonerData.json()
 iconID = playerInfo['profileIconId'] 
+SENDING_DATA_HASHMAP['iconID'] = iconID
 
-print({"puuid": puuid, "iconID": str(iconID)})
+json_data = json.dumps(SENDING_DATA_HASHMAP)
+print(json_data)
+
 sys.stdout.flush()
