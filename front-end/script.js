@@ -37,7 +37,7 @@ document.getElementById('searchButton').addEventListener('click', async function
     document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
 
     //Switch page at the end of getting data... 
-    changePage('stats.html',summonerName,summonerTag,parsedData);
+    changePage('stats.html', parsedData);
 });
 
 
