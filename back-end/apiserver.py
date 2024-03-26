@@ -64,7 +64,7 @@ def getPlayerRank(request, id, key):
 HASHMAP_DATA = {}
 #summoner, tag = 'Gaia', 'memo'
 summoner, tag = sys.argv[1], sys.argv[2]
-api_key = 'RGAPI-b8f2c841-61f3-4f85-b525-1a1b00b43911'
+api_key = 'RGAPI-8da7f5b2-6614-441f-8273-860578ea2ffe'
 accountRequest = 'https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/'
 summonerRequest = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/'
 leagueRequest = 'https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/'
@@ -80,6 +80,7 @@ tagLine = accountData['tagLine']
 summonerData = getPlayerData(summonerRequest, puuid, api_key)
 iconID = summonerData['profileIconId']
 summonerID = summonerData['id']
+summonerLevel = summonerData['summonerLevel']
 
 # getting top 3 mastery champs and their mastery points from puuid
 masteryData = getMasteryData(masteryRequest, puuid, api_key) # WARNING: DATA IS HUGE
@@ -135,6 +136,7 @@ for i in range(len(leagueData)):
 HASHMAP_DATA['gameName'] = gameName
 HASHMAP_DATA['tagLine'] = tagLine
 HASHMAP_DATA['iconID'] = iconID
+HASHMAP_DATA['summonerLevel'] = summonerLevel
 #rank solo data 
 HASHMAP_DATA['soloTier'] = soloTier
 HASHMAP_DATA['soloRank'] = soloRank
