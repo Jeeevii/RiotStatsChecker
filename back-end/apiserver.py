@@ -64,7 +64,7 @@ def getPlayerRank(request, id, key):
 HASHMAP_DATA = {}
 #summoner, tag = 'Gaia', 'memo'
 summoner, tag = sys.argv[1], sys.argv[2]
-api_key = 'RGAPI-b8f2c841-61f3-4f85-b525-1a1b00b43911'
+api_key = 'RGAPI-9264a8d0-6f96-4ab2-bcf1-8b8ea26d49b6'
 accountRequest = 'https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/'
 summonerRequest = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/'
 leagueRequest = 'https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/'

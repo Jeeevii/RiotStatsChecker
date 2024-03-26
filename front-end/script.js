@@ -20,15 +20,15 @@ document.getElementById('searchButton').addEventListener('click', async function
     const parsedData = JSON.parse(data); // parses python hashmap into an object (hashmap in js)
 
     if (parsedData.status === 'Not Found') {
-        document.getElementById('tempOutput').innerText = invalidSummonerMsg
+        document.getElementById('tempOutput').innerText = invalidSummonerMsg;
         return;
     } 
     else if (parsedData.status === 'Expired') {
-        document.getElementById('tempOutput').innerText = expiredAPIKey
+        document.getElementById('tempOutput').innerText = expiredAPIKey;
         return;
     } 
     else if (parsedData.status === 'Error') {
-        document.getElementById('tempOutput').innerText = errorMsg
+        document.getElementById('tempOutput').innerText = errorMsg;
         return;
     }
     console.log("(HTML) Logging data from JavaScript into website console:");
@@ -55,18 +55,22 @@ document.getElementById('searchButton').addEventListener('click', async function
     const champ3_ID = parsedData.champ3_ID
     const champ3_mastery = parsedData.champ3_mastery
     
-    console.log("(HTML) parsed data from Python: ", userName, tagLine, iconID, soloTier, soloRank, soloLP, flexTier, flexRank, flexLP, champ1_ID, champ1_mastery, champ2_ID, champ2_mastery, champ3_ID, champ3_mastery);
-    document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
-
+    console.log("(HTML) parsed data from Python: ", userName, tagLine, iconID, soloTier, soloRank, soloLP, flexTier, flexRank, 
+    flexLP, champ1_ID, champ1_mastery, champ2_ID, champ2_mastery, champ3_ID, champ3_mastery);
+    document.getElementById('tempOutput').innerText = parsedData; // displaying the returned data on front end
+    // console.log("Data: ", data[gameName],data[tagLine]);
+    console.log(typeof(data));
     //Switch page at the end of getting data... 
-    // changePage('stats.html',summonerName,summonerTag,data);
+    changePage('stats.html',summonerName,summonerTag,parsedData);
 });
 
 
 function changePage(file,playerName,playerTag,data) {
     //TODO: Local Storage is limited, with data --> 
     //https://stackoverflow.com/questions/17502071/transfer-data-from-one-html-file-to-another 
+
     window.location.href = file; //Change current page to param file(ie. stats.html)
-    localStorage["playerName"] = playerName; // Used Local Storage to store playerName and playerTag Details
-    localStorage["playerTag"] = playerTag;
+    localStorage["userName"] = playerName; // Used Local Storage to store playerName and playerTag Details
+    localStorage["userTag"] = playerTag;
+    localStorage["userIcon"] = data.iconID;
 };
