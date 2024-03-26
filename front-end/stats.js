@@ -1,18 +1,14 @@
-const iconURL = 'https://opgg-static.akamaized.net/meta/images/profile_icons/profileIcon';
 var summonerName = localStorage["playerName"];
 var summonerTag = localStorage["playerTag"];
-var playerIcon = localStorage["iconID"];
+var iconID = localStorage["iconID"];
+const iconURL = 'https://ddragon.leagueoflegends.com/cdn/14.6.1/img/profileicon/' + iconID + '.png'; // using op.gg's server-side icon for the profile
 // var playerLevel = 150; //Hard Set to Lvl 150 for testing
-
-
-var summonerIconURL = iconURL + playerIcon + ".jpg?image=q_auto,f_webp,w_auto&v=1710914129937";
+var summonerIconURL = iconURL;
 
 document.querySelector('#playerInfo').innerHTML = "<h2>" + summonerName + "#"+ summonerTag + "</h2>"; 
 document.querySelector('#playerIcon').innerHTML = "<img src = \"" + summonerIconURL + "\">";
 
 // console.log("URL", summonerIconURL);
 // document.querySelector('#playerInfo').innerHTML += "<p id = \"playerLvl\"> Level:" + playerLevel + "<p>";
-
-
 // document.querySelector('#playerTag').innerHTML = "<h2> #" + summonerTag + "</h2>";
 // document.querySelector('#playerIcon').innerHTML = "<img src = \"" + playerIcon + "\" alt = \"Player Icon's not loading\">";

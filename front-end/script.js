@@ -41,31 +41,32 @@ document.getElementById('searchButton').addEventListener('click', async function
 });
 
 
-function changePage(file,playerName,playerTag,parsedData) {
+function changePage(file, parsedData) {
     //TODO: Local Storage is limited, with data --> 
     //https://stackoverflow.com/questions/17502071/transfer-data-from-one-html-file-to-another
     // parsing json data from an object into variables 
 
     window.location.href = file; //Change current page to param file(ie. stats.html)
+    // account data
     localStorage["playerName"] = parsedData.gameName; // Used Local Storage to store playerName and playerTag Details
     localStorage["playerTag"] = parsedData.tagLine;
     localStorage["iconID"] = parsedData.iconID;
     localStorage["sumLevel"] = parsedData.summonerLevel;
-
+    // solo rank data
     localStorage["soloTier"] = parsedData.soloTier;
     localStorage["soloRank"] = parsedData.soloRank;
     localStorage["soloLP"] = parsedData.soloLP;
-
+    // flex rank data
     localStorage["flexTier"] = parsedData.flexTier;
     localStorage["flexRank"] = parsedData.flexRank;
     localStorage["flexLP"] = parsedData.flexLP;
-
+    // top 1 champs and mastery
     localStorage["champ1_ID"] = parsedData.champ1_ID;
     localStorage["champ1_mastery"] = parsedData.champ1_mastery;
-
+    // top 2
     localStorage["champ2_ID"] = parsedData.champ2_ID;
     localStorage["champ2_mastery"] = parsedData.champ2_mastery;
-
+    // top 3
     localStorage["champ3_ID"] = parsedData.champ3_ID;
     localStorage["champ3_mastery"] = parsedData.champ3_mastery;
 
