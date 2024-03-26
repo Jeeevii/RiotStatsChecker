@@ -2,6 +2,9 @@ import sys
 import requests
 import json
 
+# =================================================================================================
+# helper functions to make life easier 
+
 # function to handle errors
 def handle_error(response):
     ERROR_HASHMAP = {}
@@ -36,10 +39,11 @@ def getPlayerData(request, puuid, key):
         sys.exit()
     return accountData.json()
 
-
+#================================================================================================
+# starter variables
 HASHMAP_DATA = {}
-#summoner, tag = 'Jeevi', '0001'
-summoner, tag = sys.argv[1], sys.argv[2]
+summoner, tag = 'Jeevi', '0001'
+#summoner, tag = sys.argv[1], sys.argv[2]
 api_key = 'RGAPI-b8f2c841-61f3-4f85-b525-1a1b00b43911'
 accountRequest = 'https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/'
 summonerRequest = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/'
