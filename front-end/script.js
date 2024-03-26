@@ -37,11 +37,11 @@ document.getElementById('searchButton').addEventListener('click', async function
     document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
 
     //Switch page at the end of getting data... 
-    changePage('stats.html',summonerName,summonerTag,parsedData);
+    changePage('stats.html', parsedData);
 });
 
 
-function changePage(file,playerName,playerTag,parsedData) {
+function changePage(file, parsedData) {
     //TODO: Local Storage is limited, with data --> 
     //https://stackoverflow.com/questions/17502071/transfer-data-from-one-html-file-to-another
     // parsing json data from an object into variables 
