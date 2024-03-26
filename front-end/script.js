@@ -1,3 +1,7 @@
+const invalidSummonerMsg = "Summoner not found. Please try again.";
+const expiredAPIKey = "API Key is expired.";;
+const errorMsg = "An unexpected error occurred.";
+
 document.getElementById('searchButton').addEventListener('click', async function() {
     const summonerName = document.getElementById('summonerName').value;
     const summonerTag = document.getElementById('summonerTag').value;
@@ -16,15 +20,15 @@ document.getElementById('searchButton').addEventListener('click', async function
     const parsedData = JSON.parse(data); // parses python hashmap into an object (hashmap in js)
 
     if (parsedData.status === 'Not Found') {
-        document.getElementById('tempOutput').innerText = "Summoner not found. Please try again.";
+        document.getElementById('tempOutput').innerText = invalidSummonerMsg
         return;
     } 
     else if (parsedData.status === 'Expired') {
-        document.getElementById('tempOutput').innerText = "API Key is expired.";
+        document.getElementById('tempOutput').innerText = expiredAPIKey
         return;
     } 
     else if (parsedData.status === 'Error') {
-        document.getElementById('tempOutput').innerText = "An unexpected error occurred.";
+        document.getElementById('tempOutput').innerText = errorMsg
         return;
     }
     console.log("(HTML) Logging data from JavaScript into website console:");
