@@ -13,11 +13,25 @@ document.getElementById('searchButton').addEventListener('click', async function
     console.log("(HTML) Clicked! Sending and Receiving Data Now...");
     const response = await fetch(url); // sending GET request to client.js
     const data = await response.text();
+    const parsedData = JSON.parse(data); // parses python hashmap into an object (hashmap in js)
 
-    const parsedHashmap = JSON.parse(data); // parses python hashmap into an object (hashmap in js)
+    if (parsedData.status === 'Not Found') {
+        document.getElementById('tempOutput').innerText = "Summoner not found. Please try again.";
+        return;
+    } 
+    else if (parsedData.status === 'Expired') {
+        document.getElementById('tempOutput').innerText = "API Key is expired.";
+        return;
+    } 
+    else if (parsedData.status === 'Error') {
+        document.getElementById('tempOutput').innerText = "An unexpected error occurred.";
+        return;
+    }
     console.log("(HTML) Logging data from JavaScript into website console:");
-    const iconID = parsedHashmap.iconID
-    const puuID = parsedHashmap.puuid
+
+    // parsing json data from an object into variables 
+    const iconID = parsedData.iconID
+    const puuID = parsedData.puuid
     console.log("(HTML) parsed iconID and puuid: ", puuID, iconID);
     document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
 

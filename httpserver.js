@@ -1,5 +1,6 @@
 const express = require('express');
 const { spawn } = require('child_process');
+const { takeCoverage } = require('v8');
 
 const app = express();
 const port = 3000;
@@ -13,7 +14,8 @@ app.get('/client-search', (req, res) => {
     const summonerName = req.query.summonerName;
     const summonerTag = req.query.summonerTag;
     // sending data to apiserver.py
-    console.log("(JavaScript) Sending data to back-end:", summonerName, summonerTag);
+    console.log("(JavaScript) Sending data to back-end:");
+    console.log(summonerName, summonerTag);
     const python_process = spawn('python', ['./back-end/apiserver.py', summonerName, summonerTag]);
     // receiving new data from apiserver.py
     python_process.stdout.on('data', (data) => {
