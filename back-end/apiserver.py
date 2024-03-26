@@ -62,8 +62,8 @@ def getPlayerRank(request, id, key):
 #================================================================================================
 # starter variables
 HASHMAP_DATA = {}
-summoner, tag = 'Jeevi', '0001'
-#summoner, tag = sys.argv[1], sys.argv[2]
+#summoner, tag = 'Gaia', 'memo'
+summoner, tag = sys.argv[1], sys.argv[2]
 api_key = 'RGAPI-b8f2c841-61f3-4f85-b525-1a1b00b43911'
 accountRequest = 'https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/'
 summonerRequest = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/'
@@ -82,22 +82,31 @@ iconID = summonerData['profileIconId']
 summonerID = summonerData['id']
 
 # getting top 3 mastery champs and their mastery points from puuid
-masteryData = getMasteryData(masteryRequest, puuid, api_key) # WARMING: Data is HUGE
+masteryData = getMasteryData(masteryRequest, puuid, api_key) # WARNING: DATA IS HUGE
 
-championID_first = 'N/A'
-championID_first_mastery = 'N\A'
-championID_second = 'N/A'
-championID_second_mastery = 'N\A'
-championID_third = 'N/A'
-championID_third_mastery = 'N\A'
+# first
+champ1_ID = 'N/A'
+champ1_mastery  = 'N\A'
+# second
+champ2_ID = 'N/A'
+champ2_mastery = 'N\A'
+# third
+champ3_ID = 'N/A'
+champ3_mastery = 'N\A'
+
 for i in range(3): # top 3 champs
     if i == 0: 
-        championID_first = masteryData[i]['championId'] 
-        championID_first_mastery = masteryData[i]['championPoints']
-print(championID_first, championID_first_mastery)
+        champ1_ID = masteryData[i]['championId'] 
+        champ1_mastery = masteryData[i]['championPoints']
+    elif i == 1:
+        champ2_ID = masteryData[i]['championId'] 
+        champ2_mastery = masteryData[i]['championPoints']
+    elif i == 2:
+        champ3_ID = masteryData[i]['championId'] 
+        champ3_mastery = masteryData[i]['championPoints']
 
 
-#get rank and tier from id
+# get rank and tier from id
 leagueData = getPlayerRank(leagueRequest, summonerID, api_key)
 soloTier = 'N/A'
 soloRank = 'N/A'
@@ -126,7 +135,7 @@ for i in range(len(leagueData)):
 HASHMAP_DATA['gameName'] = gameName
 HASHMAP_DATA['tagLine'] = tagLine
 HASHMAP_DATA['iconID'] = iconID
-# rank solo data 
+#rank solo data 
 HASHMAP_DATA['soloTier'] = soloTier
 HASHMAP_DATA['soloRank'] = soloRank
 HASHMAP_DATA['soloLP'] = soloLP
@@ -134,7 +143,13 @@ HASHMAP_DATA['soloLP'] = soloLP
 HASHMAP_DATA['flexTier'] = flexTier
 HASHMAP_DATA['flexRank'] = flexRank
 HASHMAP_DATA['flexLP'] = flexLP
-
+#champ and mastery data
+HASHMAP_DATA['champ1_ID'] = champ1_ID
+HASHMAP_DATA['champ1_mastery'] = champ1_mastery
+HASHMAP_DATA['champ2_ID'] = champ2_ID
+HASHMAP_DATA['champ2_mastery'] = champ2_mastery
+HASHMAP_DATA['champ3_ID'] = champ3_ID
+HASHMAP_DATA['champ3_mastery'] = champ3_mastery
 json_data = json.dumps(HASHMAP_DATA) # converts data into json file to send
-#print(json_data)
+print(json_data)
 sys.stdout.flush()
