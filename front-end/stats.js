@@ -1,12 +1,11 @@
-const iconURL = 'http://ddragon.leagueoflegends.com/cdn/11.6.1/img/profileicon/';
-var summonerName = localStorage["userName"];
-var summonerTag = localStorage["userTag"];
+const iconURL = 'https://opgg-static.akamaized.net/meta/images/profile_icons/profileIcon';
+var summonerName = localStorage["playerName"];
+var summonerTag = localStorage["playerTag"];
 var playerIcon = localStorage["iconID"];
 // var playerLevel = 150; //Hard Set to Lvl 150 for testing
 
 
-var summonerIconURL = iconURL + playerIcon + ".png";
-summonerName = summonerName[0].toUpperCase() + summonerName.slice(1);
+var summonerIconURL = iconURL + playerIcon + ".jpg?image=q_auto,f_webp,w_auto&v=1710914129937";
 
 document.querySelector('#playerInfo').innerHTML = "<h2>" + summonerName + "#"+ summonerTag + "</h2>"; 
 document.querySelector('#playerIcon').innerHTML = "<img src = \"" + summonerIconURL + "\">";
