@@ -30,9 +30,28 @@ document.getElementById('searchButton').addEventListener('click', async function
     console.log("(HTML) Logging data from JavaScript into website console:");
 
     // parsing json data from an object into variables 
+    const userName = parsedData.gameName
+    const tagLine = parsedData.tagLine
     const iconID = parsedData.iconID
-    const puuID = parsedData.puuid
-    console.log("(HTML) parsed iconID and puuid: ", puuID, iconID);
+    // solo rank data
+    const soloTier = parsedData.soloTier
+    const soloRank = parsedData.soloRank
+    const soloLP = parsedData.soloLP
+    // flex rank data
+    const flexTier = parsedData.flexTier
+    const flexRank = parsedData.flexRank
+    const flexLP = parsedData.flexLP
+    // top 1 champ data
+    const champ1_ID = parsedData.champ1_ID
+    const champ1_mastery = parsedData.champ1_mastery
+    // top 2 champ data
+    const champ2_ID = parsedData.champ2_ID    
+    const champ2_mastery = parsedData.champ2_mastery
+    // top 3 champ data
+    const champ3_ID = parsedData.champ3_ID
+    const champ3_mastery = parsedData.champ3_mastery
+    
+    console.log("(HTML) parsed data from Python: ", userName, tagLine, iconID, soloTier, soloRank, soloLP, flexTier, flexRank, flexLP, champ1_ID, champ1_mastery, champ2_ID, champ2_mastery, champ3_ID, champ3_mastery);
     document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
 
     //Switch page at the end of getting data... 
