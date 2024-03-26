@@ -39,27 +39,74 @@ def getPlayerData(request, puuid, key):
         sys.exit()
     return accountData.json()
 
+# function to get all player rank info
+def getPlayerRank(request, id, key):
+    new_request = request + id + '?api_key=' + key
+    leagueData = requests.get(new_request)
+    error = handle_error(leagueData)
+    if error:
+        print(error)
+        sys.exit()
+    return leagueData.json()
+
 #================================================================================================
 # starter variables
 HASHMAP_DATA = {}
-summoner, tag = 'Jeevi', '0001'
-#summoner, tag = sys.argv[1], sys.argv[2]
+#summoner, tag = 'Gaia', 'memo'
+summoner, tag = sys.argv[1], sys.argv[2]
 api_key = 'RGAPI-b8f2c841-61f3-4f85-b525-1a1b00b43911'
 accountRequest = 'https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/'
 summonerRequest = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/'
+leagueRequest = 'https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/'
 
 # getting summoner puuid from summoner name and tag
 accountData = getSummonerData(accountRequest, summoner, tag, api_key)
 puuid = accountData['puuid']
+gameName = accountData['gameName']
+tagLine = accountData['tagLine']
 
 # getting icon from puuid 
 summonerData = getPlayerData(summonerRequest, puuid, api_key)
-iconID = summonerData['profileIconId'] 
+iconID = summonerData['profileIconId']
+summonerID = summonerData['id']
+
+#get rank and tier from id
+leagueData = getPlayerRank(leagueRequest, summonerID, api_key)
+soloTier = 'N/A'
+soloRank = 'N/A'
+soloLP = 'N/A'
+flexTier = 'N/A'
+flexRank = 'N/A'
+flexLP = 'N/A'
+
+for i in range(len(leagueData)):
+    if leagueData[i].get('queueType') == 'RANKED_SOLO_5x5':
+        # solo data 
+        soloTier = leagueData[i]['tier']
+        soloRank = leagueData[i]['rank']
+        soloLP = leagueData[i]['leaguePoints']
+    else: 
+        # flex data
+        flexTier = leagueData[i]['tier']
+        flexRank = leagueData[i]['rank']
+        flexLP = leagueData[i]['leaguePoints']
+
 
 #================================================================================================
 # sending data to httpserver.js in json format
-HASHMAP_DATA['puuid'] = puuid
+
+#account data
+HASHMAP_DATA['gameName'] = gameName
+HASHMAP_DATA['tagLine'] = tagLine
 HASHMAP_DATA['iconID'] = iconID
+# rank data 
+HASHMAP_DATA['soloTier'] = soloTier
+HASHMAP_DATA['soloRank'] = soloRank
+HASHMAP_DATA['soloLP'] = soloLP
+HASHMAP_DATA['flexTier'] = flexTier
+HASHMAP_DATA['flexRank'] = flexRank
+HASHMAP_DATA['flexLP'] = flexLP
+
 json_data = json.dumps(HASHMAP_DATA) # converts data into json file to send
 print(json_data)
 sys.stdout.flush()
