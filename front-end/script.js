@@ -33,8 +33,8 @@ document.getElementById('searchButton').addEventListener('click', async function
     }
     console.log("(HTML) Logging data from JavaScript into website console:");
 
-    /*console.log("(HTML) parsed data from Python: ", userName, tagLine, iconID, sumLevel, soloTier, soloRank, soloLP, flexTier, flexRank, flexLP, champ1_ID, champ1_mastery, champ2_ID, champ2_mastery, champ3_ID, champ3_mastery); */
-    document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
+    // console.log("(HTML) parsed data from Python: ", userName, tagLine, iconID, sumLevel, soloTier, soloRank, soloLP, flexTier, flexRank, flexLP, champ1_ID, champ1_mastery, champ2_ID, champ2_mastery, champ3_ID, champ3_mastery); 
+    // document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
 
     //Switch page at the end of getting data... 
     changePage('stats.html', parsedData);
@@ -69,5 +69,5 @@ function changePage(file, parsedData) {
     // top 3
     localStorage["champ3_ID"] = parsedData.champ3_ID;
     localStorage["champ3_mastery"] = parsedData.champ3_mastery;
-
+    localStorage['matchStats'] = parsedData.matchStats;
 };

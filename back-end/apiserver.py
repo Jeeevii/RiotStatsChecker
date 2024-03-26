@@ -59,17 +59,44 @@ def getPlayerRank(request, id, key):
         sys.exit()
     return leagueData.json()
 
+#Match ID Request Call: https://developer.riotgames.com/apis#match-v5
+###Params: request =  riot games api location: (ie matchRequest)
+# puuid = Unique summoner puuid 
+# key = current APIKey
+# count = Number of matches that we want to be returned
+# Default Param: start = 0 (ie. get match IDs from the most recent matches the summoner has played)
+# -- Note: Can expand to unique match types(ie flex, ranked, norms) 
+### 
+def getMatchIDs(request, puuid, key, count):
+    new_request = request + puuid + '/ids/' + '?start=0&count=' + str(count) + '&api_key=' + key
+    matchID = requests.get(new_request)
+    error = handle_error(matchID)
+    if error:
+        print(error)
+        sys.exit()
+    return matchID.json()
+
+def getMatchData(request, matchID, key):
+    new_request = request + matchID + '?api_key=' + key
+    matchData = requests.get(new_request)
+    error = handle_error(matchData)
+    if error:
+        print(error)
+        sys.exit()
+    return matchData.json()
+
 #================================================================================================
 # starter variables
 HASHMAP_DATA = {}
-#summoner, tag = 'Gaia', 'memo'
-summoner, tag = sys.argv[1], sys.argv[2]
-api_key = 'RGAPI-67a04bda-8f4b-423d-959c-25b6e3c4804c'
+summoner, tag = 'Jeevi', '0001'
+# summoner, tag = sys.argv[1], sys.argv[2]
+api_key = 'RGAPI-a71510f8-ff16-4089-9068-8fb6af08c2b5'
 accountRequest = 'https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/'
 summonerRequest = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/'
 leagueRequest = 'https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/'
 masteryRequest = 'https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/'
-
+matchIDRequest = 'https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/'
+matchDataRequest = 'https://americas.api.riotgames.com/lol/match/v5/matches/'
 # getting summoner puuid from summoner name and tag
 accountData = getSummonerData(accountRequest, summoner, tag, api_key)
 puuid = accountData['puuid']
@@ -128,6 +155,33 @@ for i in range(len(leagueData)):
         flexRank = leagueData[i]['rank']
         flexLP = leagueData[i]['leaguePoints']
 
+# get match ids 
+matchIDs = getMatchIDs(matchIDRequest, puuid, api_key, 10) # Currently get 5 last matches
+
+# get match data
+matchesData = {}
+for i in range(len(matchIDs)):
+    matchesData[i] = getMatchData(matchDataRequest, matchIDs[i], api_key)
+
+def getMatchStats():
+    lst = []
+    for i in matchesData:
+        currMatchData = {}
+        # Get Index of Participant
+        index = matchesData[i]['metadata']['participants'].index(puuid)
+        
+        #Gets data of champ, KDA, win/lose
+        currMatchData['champion'] =  matchesData[i]['info']['participants'][index]['championName']
+        currMatchData['kills'] = matchesData[i]['info']['participants'][index]['kills']
+        currMatchData['deaths'] =  matchesData[i]['info']['participants'][index]['deaths']
+        currMatchData['assists'] =  matchesData[i]['info']['participants'][index]['assists']
+        currMatchData['win'] = matchesData[i]['info']['participants'][index]['win']
+        lst.append(currMatchData)
+    return lst
+
+#Returns a list of Hashmaps w/ above conditions(ie Champ + KDA + Win/Defeat)
+#Note: List is in order of most recent matches
+matchStats = getMatchStats()
 
 #================================================================================================
 # sending data to httpserver.js in json format
@@ -152,6 +206,7 @@ HASHMAP_DATA['champ2_ID'] = champ2_ID
 HASHMAP_DATA['champ2_mastery'] = champ2_mastery
 HASHMAP_DATA['champ3_ID'] = champ3_ID
 HASHMAP_DATA['champ3_mastery'] = champ3_mastery
+HASHMAP_DATA['matchStats'] = matchStats
 json_data = json.dumps(HASHMAP_DATA) # converts data into json file to send
 print(json_data)
 sys.stdout.flush()
