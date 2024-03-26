@@ -3,9 +3,11 @@ var summonerTag = localStorage["playerTag"];
 var summonerLevel = localStorage["sumLevel"];
 var playerIcon = localStorage["iconID"];
 var matchStats = localStorage["matchStats"];
-console.log(matchStats);
-console.log(matchStats[0]);
-// var playerLevel = 150; //Hard Set to Lvl 150 for testin
+matchStats = JSON.parse(matchStats);
+
+
+console.log(matchStats[0]); // Gets Basic Stats of most recent match
+
 var summonerIconURL = 'https://ddragon.leagueoflegends.com/cdn/14.6.1/img/profileicon/' + playerIcon + ".png"; // using datadragon to get icon from iconID
 
 // data getting passed to website

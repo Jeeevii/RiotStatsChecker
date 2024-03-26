@@ -88,8 +88,8 @@ def getMatchData(request, matchID, key):
 #================================================================================================
 # starter variables
 HASHMAP_DATA = {}
-summoner, tag = 'Jeevi', '0001'
-# summoner, tag = sys.argv[1], sys.argv[2]
+# summoner, tag = 'Jeevi', '0001'
+summoner, tag = sys.argv[1], sys.argv[2]
 api_key = 'RGAPI-a71510f8-ff16-4089-9068-8fb6af08c2b5'
 accountRequest = 'https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/'
 summonerRequest = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/'
@@ -169,7 +169,6 @@ def getMatchStats():
         currMatchData = {}
         # Get Index of Participant
         index = matchesData[i]['metadata']['participants'].index(puuid)
-        
         #Gets data of champ, KDA, win/lose
         currMatchData['champion'] =  matchesData[i]['info']['participants'][index]['championName']
         currMatchData['kills'] = matchesData[i]['info']['participants'][index]['kills']

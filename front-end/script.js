@@ -69,5 +69,6 @@ function changePage(file, parsedData) {
     // top 3
     localStorage["champ3_ID"] = parsedData.champ3_ID;
     localStorage["champ3_mastery"] = parsedData.champ3_mastery;
-    localStorage['matchStats'] = parsedData.matchStats;
+    stats = JSON.stringify(parsedData.matchStats);
+    localStorage['matchStats'] = stats;
 };
