@@ -87,9 +87,14 @@ masteryData = getMasteryData(masteryRequest, puuid, api_key) # WARMING: Data is 
 championID_first = 'N/A'
 championID_first_mastery = 'N\A'
 championID_second = 'N/A'
+championID_second_mastery = 'N\A'
 championID_third = 'N/A'
+championID_third_mastery = 'N\A'
 for i in range(3): # top 3 champs
-    print(masteryData[i])
+    if i == 0: 
+        championID_first = masteryData[i]['championId'] 
+        championID_first_mastery = masteryData[i]['championPoints']
+print(championID_first, championID_first_mastery)
 
 
 #get rank and tier from id
