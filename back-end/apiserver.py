@@ -165,7 +165,10 @@ for i in range(len(matchIDs)):
 
 # get Match Stats of 5 recent matches
 #Note: matchStats: queueID = Depicts which gameMode:
-#QueueIDs: Id = 720 --> Clash, 450 --> ARAM, 440 --> FlexQ, 420 --> Solo
+#QueueIDs: Id = 720 --> Clash, 450 --> ARAM, 440 --> FlexQ, 420 --> Solo, 400 --> Draft, ??? --> QuickPlay 
+#1020 --> One For All, ??? --> URF, ??? --> ARURF, ??? --> Nexus Blitz
+#Note: gameMode is pretty inconsistent as: Classic depicts Flex,SoloQ and Norms, Depicts Gamemodes Well(ie. Aram, OneForAll)
+#Doesn't differentiate well with Clash(shows clash games as GameMode: ARAM?)
 def getMatchStats():
     lst = []
     for i in matchesData:
