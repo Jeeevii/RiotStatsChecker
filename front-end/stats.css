@@ -71,3 +71,12 @@ button:hover {
     margin: 0 auto; /* Center images horizontally */
 }
 
+.center-content-sideways {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-content-sideways > div {
+    margin: 0 10px; /* Adjust margin as needed */
+}
