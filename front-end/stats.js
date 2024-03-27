@@ -18,7 +18,7 @@ var champ2_ID = localStorage["champ2_ID"]
 var champ3_ID = localStorage["champ3_ID"]
 
 var matchStats = localStorage["matchStats"];
-// matchStats = JSON.parse(matchStats);
+matchStats = JSON.parse(matchStats);
 
 // console.log(matchStats);
 // console.log(matchStats[0]); // Gets Basic Stats of most recent match
@@ -59,6 +59,7 @@ if (flexTier == "N/A"){
     flexImg.style.height = '40%';   
 }
 
+document.querySelector('#center-content-sideways').innerHTML = "<h3>" + ;
 document.querySelector('#playerInfo').innerHTML = "<h2>" + summonerName + " #"+ summonerTag + "</h2>"; // player name and tag
 document.querySelector('#playerIcon').innerHTML = "<img src = \"" + summonerIconURL + "\">"; // player icon 
 document.querySelector('#playerInfo').innerHTML += "<p id = \"playerLvl\"> Level: " + summonerLevel + "<p>"; // player level 
@@ -67,8 +68,3 @@ document.querySelector('#flexTier').appendChild(flexImg); // uploading flex rank
 document.querySelector('#champ1').innerHTML = "<img src='" + championIconURL + champ1_ID + ".png'>"; // top 3 champs icons
 document.querySelector('#champ2').innerHTML = "<img src='" + championIconURL + champ2_ID + ".png'>";
 document.querySelector('#champ3').innerHTML = "<img src='" + championIconURL + champ3_ID + ".png'>";
-
-
-
-
-// document.querySelector('#playerIcon').innerHTML = "<img src = \"" + playerIcon + "\" alt = \"Player Icon's not loading\">";
