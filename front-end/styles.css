@@ -4,6 +4,8 @@ body {
     align-items: flex-start;
     height: 100vh;
     margin: 0;
+    background-color: #ffffff; /* white background */
+    color: #000000; /* black text */
 }
 
 .container {
@@ -35,5 +37,34 @@ button {
 }
 
 button:hover {
+    background-color: #0056b3;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
+    background-color: #333333; /* dark background */
+    color: #ffffff; /* white text */
+}
+
+/* Toggle Button Styles */
+#mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#mode-toggle:hover {
     background-color: #0056b3;
 }

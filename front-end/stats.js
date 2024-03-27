@@ -68,3 +68,17 @@ document.querySelector('#flexTier').appendChild(flexImg); // uploading flex rank
 document.querySelector('#champ1').innerHTML = "<img src='" + championIconURL + champ1_ID + ".png'>"; // top 3 champs icons
 document.querySelector('#champ2').innerHTML = "<img src='" + championIconURL + champ2_ID + ".png'>";
 document.querySelector('#champ3').innerHTML = "<img src='" + championIconURL + champ3_ID + ".png'>";
+
+
+
+// function referenced from gbt to swap between light and dark mode using local storage system
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const isDarkMode = document.body.classList.contains('dark-mode'); // store mode in localStorage for user
+    localStorage.setItem('darkMode', isDarkMode);
+}
+const isDarkModeStored = localStorage.getItem('darkMode');
+if (isDarkModeStored === 'true') { // if dark mode was stored swap 
+    document.body.classList.add('dark-mode');
+}
+document.getElementById('mode-toggle').addEventListener('click', toggleDarkMode); // reading from button, if clicked call function to toggle dark mode

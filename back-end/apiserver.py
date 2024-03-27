@@ -85,6 +85,24 @@ def getMatchData(request, matchID, key):
         sys.exit()
     return matchData.json()
 
+def getMatchStats():
+    lst = []
+    for i in matchesData:
+        currMatchData = {}
+        # Get Index of Participant
+        index = matchesData[i]['metadata']['participants'].index(puuid)
+        #Gets data of champ, KDA, win/lose
+        currMatchData['champion'] =  matchesData[i]['info']['participants'][index]['championName']
+        currMatchData['kills'] = matchesData[i]['info']['participants'][index]['kills']
+        currMatchData['deaths'] =  matchesData[i]['info']['participants'][index]['deaths']
+        currMatchData['assists'] =  matchesData[i]['info']['participants'][index]['assists']
+        currMatchData['lane'] = matchesData[i]['info']['participants'][index]['lane']
+        currMatchData['role'] = matchesData[i]['info']['participants'][index]['role']
+        currMatchData['win'] = matchesData[i]['info']['participants'][index]['win']
+        lst.append(currMatchData)
+    return lst
+
+
 #================================================================================================
 # starter variables
 HASHMAP_DATA = {}
@@ -155,34 +173,7 @@ for i in range(len(leagueData)):
         flexRank = leagueData[i]['rank']
         flexLP = leagueData[i]['leaguePoints']
 
-# get match ids 
-matchIDs = getMatchIDs(matchIDRequest, puuid, api_key, 10) # Currently get 5 last matches
 
-# get match data
-matchesData = {}
-for i in range(len(matchIDs)):
-    matchesData[i] = getMatchData(matchDataRequest, matchIDs[i], api_key)
-
-def getMatchStats():
-    lst = []
-    for i in matchesData:
-        currMatchData = {}
-        # Get Index of Participant
-        index = matchesData[i]['metadata']['participants'].index(puuid)
-        #Gets data of champ, KDA, win/lose
-        currMatchData['champion'] =  matchesData[i]['info']['participants'][index]['championName']
-        currMatchData['kills'] = matchesData[i]['info']['participants'][index]['kills']
-        currMatchData['deaths'] =  matchesData[i]['info']['participants'][index]['deaths']
-        currMatchData['assists'] =  matchesData[i]['info']['participants'][index]['assists']
-        currMatchData['lane'] = matchesData[i]['info']['participants'][index]['lane']
-        currMatchData['role'] = matchesData[i]['info']['participants'][index]['role']
-        currMatchData['win'] = matchesData[i]['info']['participants'][index]['win']
-        lst.append(currMatchData)
-    return lst
-
-#Returns a list of Hashmaps w/ above conditions(ie Champ + KDA + Win/Defeat)
-#Note: List is in order of most recent matches
-matchStats = getMatchStats()
 
 #================================================================================================
 # sending data to httpserver.js in json format
@@ -207,7 +198,19 @@ HASHMAP_DATA['champ2_ID'] = champ2_ID
 HASHMAP_DATA['champ2_mastery'] = champ2_mastery
 HASHMAP_DATA['champ3_ID'] = champ3_ID
 HASHMAP_DATA['champ3_mastery'] = champ3_mastery
+# get match ids 
+matchIDs = getMatchIDs(matchIDRequest, puuid, api_key, 10) # Currently get 5 last matches
+
+# get match data
+matchesData = {}
+for i in range(len(matchIDs)):
+    matchesData[i] = getMatchData(matchDataRequest, matchIDs[i], api_key)
+
+#Returns a list of Hashmaps w/ above conditions(ie Champ + KDA + Win/Defeat)
+#Note: List is in order of most recent matches
+matchStats = getMatchStats()
 HASHMAP_DATA['matchStats'] = matchStats
+
 json_data = json.dumps(HASHMAP_DATA) # converts data into json file to send
 print(json_data)
 sys.stdout.flush()
