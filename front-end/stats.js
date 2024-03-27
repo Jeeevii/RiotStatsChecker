@@ -4,15 +4,6 @@ var summonerName = localStorage["playerName"];
 var summonerTag = localStorage["playerTag"];
 var summonerLevel = localStorage["sumLevel"];
 var playerIcon = localStorage["iconID"];
-<<<<<<< HEAD
-var matchStats = localStorage["matchStats"];
-matchStats = JSON.parse(matchStats);
-
-console.log(matchStats);
-console.log(matchStats[0]); // Gets Basic Stats of most recent match
-console.log(matchStats[0]['kills']);
-var summonerIconURL = 'https://ddragon.leagueoflegends.com/cdn/14.6.1/img/profileicon/' + playerIcon + ".png"; // using datadragon to get icon from iconID
-=======
 //solo rank data
 var soloTier = localStorage["soloTier"];
 var soloRank = localStorage["soloRank"];
@@ -25,8 +16,13 @@ var flexLP = localStorage["flexLP"];
 var champ1_ID = localStorage["champ1_ID"]
 var champ2_ID = localStorage["champ2_ID"]
 var champ3_ID = localStorage["champ3_ID"]
->>>>>>> main
 
+var matchStats = localStorage["matchStats"];
+// matchStats = JSON.parse(matchStats);
+
+// console.log(matchStats);
+// console.log(matchStats[0]); // Gets Basic Stats of most recent match
+// console.log(matchStats[0]['kills']);
 // =============================================================================================================================================================
 // using parsed data and presenting them in a cooler way
 var summonerIconURL = 'https://ddragon.leagueoflegends.com/cdn/14.6.1/img/profileicon/' + playerIcon + ".png"; // using datadragon to get icon from iconID
@@ -48,11 +44,6 @@ flexImg.style.height = '20%';
 
 // ================================================================================================================================================================
 // data getting passed to website
-<<<<<<< HEAD
-document.querySelector('#playerInfo').innerHTML = "<h2>" + summonerName + "#"+ summonerTag + "</h2>"; 
-document.querySelector('#playerIcon').innerHTML = "<img src = \"" + summonerIconURL + "\">";
-document.querySelector('#playerInfo').innerHTML += "<p id = \"playerLvl\"> Level: " + summonerLevel + "<p>";
-=======
 
 // solo tier edge case
 if (soloTier == "N/A"){
@@ -80,5 +71,4 @@ document.querySelector('#champ3').innerHTML = "<img src='" + championIconURL + c
 
 
 
->>>>>>> main
 // document.querySelector('#playerIcon').innerHTML = "<img src = \"" + playerIcon + "\" alt = \"Player Icon's not loading\">";
