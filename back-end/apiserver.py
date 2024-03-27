@@ -156,13 +156,16 @@ for i in range(len(leagueData)):
         flexLP = leagueData[i]['leaguePoints']
 
 # get match ids 
-matchIDs = getMatchIDs(matchIDRequest, puuid, api_key, 10) # Currently get 5 last matches
+matchIDs = getMatchIDs(matchIDRequest, puuid, api_key, 11) # Currently get 5 last matches
 
 # get match data
 matchesData = {}
 for i in range(len(matchIDs)):
     matchesData[i] = getMatchData(matchDataRequest, matchIDs[i], api_key)
 
+# get Match Stats of 5 recent matches
+#Note: matchStats: queueID = Depicts which gameMode:
+#QueueIDs: Id = 720 --> Clash, 450 --> ARAM, 440 --> FlexQ, 420 --> Solo
 def getMatchStats():
     lst = []
     for i in matchesData:
@@ -175,8 +178,13 @@ def getMatchStats():
         currMatchData['deaths'] =  matchesData[i]['info']['participants'][index]['deaths']
         currMatchData['assists'] =  matchesData[i]['info']['participants'][index]['assists']
         currMatchData['lane'] = matchesData[i]['info']['participants'][index]['lane']
-        currMatchData['role'] = matchesData[i]['info']['participants'][index]['role']
+        # currMatchData['role'] = matchesData[i]['info']['participants'][index]['role']
         currMatchData['win'] = matchesData[i]['info']['participants'][index]['win']
+        # currMatchData['queueType'] =  matchesData[i]['info']['gameType']
+        currMatchData['gameMode'] =  matchesData[i]['info']['gameMode']
+        # currMatchData['gameName'] =  matchesData[i]['info']['gameName']
+        currMatchData['queueId'] =  matchesData[i]['info']['queueId']
+
         lst.append(currMatchData)
     return lst
 
