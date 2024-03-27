@@ -5,9 +5,9 @@ var playerIcon = localStorage["iconID"];
 var matchStats = localStorage["matchStats"];
 matchStats = JSON.parse(matchStats);
 
-
+console.log(matchStats);
 console.log(matchStats[0]); // Gets Basic Stats of most recent match
-
+console.log(matchStats[0]['kills']);
 var summonerIconURL = 'https://ddragon.leagueoflegends.com/cdn/14.6.1/img/profileicon/' + playerIcon + ".png"; // using datadragon to get icon from iconID
 
 // data getting passed to website

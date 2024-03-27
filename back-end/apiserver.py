@@ -174,6 +174,8 @@ def getMatchStats():
         currMatchData['kills'] = matchesData[i]['info']['participants'][index]['kills']
         currMatchData['deaths'] =  matchesData[i]['info']['participants'][index]['deaths']
         currMatchData['assists'] =  matchesData[i]['info']['participants'][index]['assists']
+        currMatchData['lane'] = matchesData[i]['info']['participants'][index]['lane']
+        currMatchData['role'] = matchesData[i]['info']['participants'][index]['role']
         currMatchData['win'] = matchesData[i]['info']['participants'][index]['win']
         lst.append(currMatchData)
     return lst
