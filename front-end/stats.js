@@ -20,9 +20,13 @@ var champ3_ID = localStorage["champ3_ID"]
 var matchStats = localStorage["matchStats"];
 matchStats = JSON.parse(matchStats);
 
-// console.log(matchStats);
-// console.log(matchStats[0]); // Gets Basic Stats of most recent match
+console.log(matchStats);
+console.log(matchStats[0]); // Gets Basic Stats of most recent match
 // console.log(matchStats[0]['kills']);
+
+//Note: matchStats: queueID = Depicts which gameMode:
+//QueueIDs: Id = 720 --> Clash, 450 --> ARAM, 440 --> FlexQ, 420 --> SoloQ
+
 // =============================================================================================================================================================
 // using parsed data and presenting them in a cooler way
 var summonerIconURL = 'https://ddragon.leagueoflegends.com/cdn/14.6.1/img/profileicon/' + playerIcon + ".png"; // using datadragon to get icon from iconID
