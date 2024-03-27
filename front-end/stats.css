@@ -61,3 +61,22 @@ button:hover {
 #back-btn:hover{
     background-color: #0056b3;
 }
+
+.center-content {
+    text-align: center; /* Center text horizontally */
+}
+
+.center-content img {
+    display: block; /* Ensure images are displayed as block elements */
+    margin: 0 auto; /* Center images horizontally */
+}
+
+.center-content-sideways {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-content-sideways > div {
+    margin: 0 10px; /* Adjust margin as needed */
+}
