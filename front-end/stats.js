@@ -59,7 +59,7 @@ if (flexTier == "N/A"){
     flexImg.style.height = '40%';   
 }
 
-document.querySelector('#center-content-sideways').innerHTML = "<h3>" + ;
+// document.querySelector('#center-content-sideways').innerHTML = "<h3>" + ;
 document.querySelector('#playerInfo').innerHTML = "<h2>" + summonerName + " #"+ summonerTag + "</h2>"; // player name and tag
 document.querySelector('#playerIcon').innerHTML = "<img src = \"" + summonerIconURL + "\">"; // player icon 
 document.querySelector('#playerInfo').innerHTML += "<p id = \"playerLvl\"> Level: " + summonerLevel + "<p>"; // player level 
