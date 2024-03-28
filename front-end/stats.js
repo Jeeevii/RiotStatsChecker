@@ -16,11 +16,7 @@ var flexLP = localStorage["flexLP"];
 var champ1_ID = localStorage["champ1_ID"]
 var champ2_ID = localStorage["champ2_ID"]
 var champ3_ID = localStorage["champ3_ID"]
-// top 3 most played champions mastery
-var champ1_mastery = localStorage["champ1_mastery"];
-var champ2_mastery = localStorage["champ2_mastery"];
-var champ3_mastery = localStorage["champ3_mastery"];
-// match data
+
 var matchStats = localStorage["matchStats"];
 matchStats = JSON.parse(matchStats);
 
@@ -37,17 +33,18 @@ var summonerIconURL = 'https://ddragon.leagueoflegends.com/cdn/14.6.1/img/profil
 var championIconURL = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/'; // add champtionID.png
 
 // image and rank data for solo
-document.querySelector('#soloTier').innerHTML = "<h3> Ranked Solo " + soloTier + " " + soloRank + " " + soloLP + " LP </h3>";
+document.querySelector('#soloTier').textContent = "Ranked Solo " + soloTier + " " + soloRank + " " + soloLP + " LP";
 const soloImg = document.createElement('img');
 soloImg.src = 'Ranked Emblems/' + soloTier + '.png';
 soloImg.style.width = '20%';
 soloImg.style.height = '20%'; 
 // image and rank data for flex 
-document.querySelector('#flexTier').innerHTML = "<h3> Ranked Flex " + flexTier + " " + flexRank + " " + flexLP + " LP </h3>";
+document.querySelector('#flexTier').textContent = "Ranked Flex " + flexTier + " " + flexRank + " " + flexLP + " LP";
 const flexImg = document.createElement('img');
 flexImg.src = 'Ranked Emblems/' + flexTier + '.png';
 flexImg.style.width = '20%';
 flexImg.style.height = '20%'; 
+
 
 // ================================================================================================================================================================
 // data getting passed to website
@@ -58,6 +55,7 @@ if (soloTier == "N/A"){
     soloImg.style.width = '40%';
     soloImg.style.height = '40%';   
 }
+document.querySelector('#soloTier').appendChild(soloImg);
 // flex tier edge case
 if (flexTier == "N/A"){
     flexImg.src = 'Ranked Emblems/UNRANKED.png';
@@ -66,17 +64,15 @@ if (flexTier == "N/A"){
 }
 
 // document.querySelector('#center-content-sideways').innerHTML = "<h3>" + ;
-document.querySelector('#playerInfo').innerHTML = "<h1>" + summonerName + " #"+ summonerTag + "</h1>"; // player name and tag
-document.querySelector('#playerInfo').innerHTML += "<h3 id = \"playerLvl\"> Level: " + summonerLevel + "</h3>"; // player level 
+document.querySelector('#playerInfo').innerHTML = "<h2>" + summonerName + " #"+ summonerTag + "</h2>"; // player name and tag
 document.querySelector('#playerIcon').innerHTML = "<img src = \"" + summonerIconURL + "\">"; // player icon 
+document.querySelector('#playerInfo').innerHTML += "<p id = \"playerLvl\"> Level: " + summonerLevel + "<p>"; // player level 
 document.querySelector('#soloTier').appendChild(soloImg); // uploading solo rank
 document.querySelector('#flexTier').appendChild(flexImg); // uploading flex rank 
 document.querySelector('#champ1').innerHTML = "<img src='" + championIconURL + champ1_ID + ".png'>"; // top 3 champs icons
 document.querySelector('#champ2').innerHTML = "<img src='" + championIconURL + champ2_ID + ".png'>";
 document.querySelector('#champ3').innerHTML = "<img src='" + championIconURL + champ3_ID + ".png'>";
-document.querySelector('#champ1_mastery').innerHTML = "<h2>" + champ1_mastery +  "</h2>"; // top 3 champs mastery data
-document.querySelector('#champ2_mastery').innerHTML = "<h2>" + champ2_mastery +  "</h2>"; 
-document.querySelector('#champ3_mastery').innerHTML = "<h2>" + champ3_mastery +  "</h2>"; 
+
 
 
 // function referenced from gbt to swap between light and dark mode using local storage system
