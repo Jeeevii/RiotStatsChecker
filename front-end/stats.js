@@ -24,8 +24,8 @@ var champ3_mastery = localStorage["champ3_mastery"];
 var matchStats = localStorage["matchStats"];
 matchStats = JSON.parse(matchStats);
 
-console.log(matchStats);
-console.log(matchStats[0]); // Gets Basic Stats of most recent match
+//console.log(matchStats);
+//console.log(matchStats[0]); // Gets Basic Stats of most recent match
 // console.log(matchStats[0]['kills']);
 
 //Note: matchStats: queueID = Depicts which gameMode:
@@ -37,6 +37,35 @@ var summonerIconURL = 'https://ddragon.leagueoflegends.com/cdn/14.6.1/img/profil
 var championIconURL = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/'; // add champtionID.png
 
 
+// getting match history data and displaying into border
+const matchHistoryDiv = document.querySelector('.match-history');
+// Get the last 5 matches from matchStats array
+const lastFiveMatches = matchStats.slice(-5);
+// hashmap with QueueIDs: Id = 720 --> Clash, 450 --> ARAM, 440 --> Ranked Flex, 420 --> Ranked Solo
+const gameModes = {
+    720: 'Clash',
+    450: 'ARAM',
+    440: 'Ranked Flex',
+    420: 'Ranked Solo'
+};
+
+lastFiveMatches.forEach((match, index) => { // for loop basically? 
+    const matchDiv = document.createElement('div');
+    matchDiv.classList.add('match-entry');
+    // Determine the game mode from QueueID
+    const gameMode = gameModes[match.queueId] || 'Unknown';
+    // Construct HTML content for each match
+    matchDiv.innerHTML = `
+        <h3>Game ${index + 1}</h3>
+        <p>Mode: ${gameMode}</p>
+        <p>${match.champion}</p>
+        <p>${match.kills} / ${match.deaths} / ${match.assists}</p>
+        <p>Lane: ${match.lane}</p>
+        <p>${match.win ? 'Victory' : 'Defeat'}</p>
+    `;
+
+    matchHistoryDiv.appendChild(matchDiv);
+});
 
 
 // ================================================================================================================================================================
@@ -47,14 +76,14 @@ const iconImg = document.createElement('img');
 iconImg.src = summonerIconURL;
 iconImg.style.width = '60%';
 iconImg.style.height = '60%';  
-document.querySelector('#playerIcon').appendChild(iconImg); // uploading solo rank
+document.querySelector('#playerIcon').appendChild(iconImg); // uploading profile icon
 
 // solo tier edge case
 const soloImg = document.createElement('img');
 if (soloTier == "N/A"){
     soloImg.src = 'Ranked Emblems/UNRANKED.png';
-    soloImg.style.width = '120%';
-    soloImg.style.height = '120%';   
+    soloImg.style.width = '100%';
+    soloImg.style.height = '100%';   
 } else {
     soloImg.src = 'Ranked Emblems/' + soloTier + '.png';
     soloImg.style.width = '60%';

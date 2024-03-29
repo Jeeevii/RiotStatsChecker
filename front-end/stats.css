@@ -43,8 +43,10 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* Styles for back button */
 #back-btn {
+    position: fixed;
+    top: 60px; /* Adjust the top position as needed */
+    right: 20px;
     text-decoration: none;
     padding: 10px 20px;
     font-size: 16px;
@@ -53,6 +55,8 @@ button:hover {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    margin-top: 10px; /* Add some top margin */
+    display: block; /* Make it a block-level element */
 }
 
 #back-btn:hover {
@@ -111,6 +115,19 @@ button:hover {
     margin-right: 5px; /* Add space between tier and rank */
 }
 
+.data-container {
+    position: absolute; /* Position absolutely */
+    top: 70%; /* Align to the vertical center */
+    left: 50%; /* Align to the horizontal center */
+    transform: translate(-50%, -50%); /* Center the container */
+    
+    border: 2px solid #333; /* Border style */
+    border-radius: 10px; /* Rounded corners */
+    padding: 100px; /* Padding inside the border */
+    
+}
+
+
 /* Styles for dark mode toggle button */
 #mode-toggle {
     position: fixed;
@@ -128,3 +145,4 @@ button:hover {
 #mode-toggle:hover {
     background-color: #0056b3;
 }
+

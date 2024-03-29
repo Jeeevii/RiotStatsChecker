@@ -11,10 +11,10 @@ This is a simple web application for fetching and displaying summoner stats from
 
 ### Installation
 
-# Install Express
+#### Install Express
 command: npm install express
 
-# Install Pip
+#### Install Pip
 command: pip install requests
 
 Just follow what ever the terminal is asking you to do
