@@ -8,33 +8,48 @@
 </head>
 <body>
     <div class="container">
-        <div id="playerInfo" class="player-info">
-            <!-- Player Info(ie Name+#Tag and Level goes here) -->
+        <div class="left-side">
+            <div class="center-content">
+                <div id="playerName" class="player-name"></div>
+                <div id="playerLevel" class="player-level">
+                    <div id="playerIcon"> </div> <!-- Player Level is under icon IDK HOW -->
+                </div>
+                <!-- Solo Rank and Rank data side by side -->
+                <div id="soloTierRank" class="rank-container">
+                    <div id="soloTier"> </div>
+                    <div id="soloRank"> </div>
+                </div>
+                <!-- Flex Rank and Rank data side by side -->
+                <div id="flexTierRank" class="rank-container">
+                    <div id="flexTier"> </div>
+                    <div id="flexRank"> </div>
+                </div>
+                <!-- Top 3 champs side by side, with mastery points under -->
+                <div class="center-content-sideways">
+                    <div>
+                        <div id="champ2"></div>
+                        <div id="champ2_mastery"></div>
+                    </div>
+                    <div>
+                        <div id="champ1"></div>
+                        <div id="champ1_mastery"></div>
+                    </div>
+                    <div>
+                        <div id="champ3"></div>
+                        <div id="champ3_mastery"></div>
+                    </div>
+                </div>         
+                <div class="data-container">
+                    <h2>Match History</h2>
+                    <!-- Content to be constrained within the border -->
+                    <div class="match-history">
+                        <!-- Match history data will be populated here -->
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="center-content">
-            <div id="playerIcon"> </div>
-            <div id="soloTier"> </div>
-            <div id="soloRank"> </div>
-            <div id="flexTier"> </div>
-            <div id="flexRank"> </div>
-            <div class="center-content-sideways">
-                <div>
-                    <div id="champ2"></div>
-                    <div id="champ2_mastery"></div>
-                </div>
-                <div>
-                    <div id="champ1"></div>
-                    <div id="champ1_mastery"></div>
-                </div>
-                <div>
-                    <div id="champ3"></div>
-                    <div id="champ3_mastery"></div>
-                </div>
-            </div>         
-            <a href="index.html" id="back-btn">Back</a>
-        </div>
-        <!-- Light/Dark Mode Toggle Button -->
-        <button id="mode-toggle">Light/Dark Mode</button>
+        <button id="mode-toggle">Light/Dark Mode</button> <!-- Light/Dark Mode Button -->
+        <a href="index.html" id="back-btn">Back</a> <!-- back button -->
     </div>
     <script src="stats.js"></script>
 </body>

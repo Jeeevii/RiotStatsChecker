@@ -1,6 +1,7 @@
+/* Base styles for body */
 body {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Align everything to the left */
     align-items: flex-start;
     height: 100vh;
     margin: 0;
@@ -13,33 +14,21 @@ body.dark-mode {
     background-color: #333333; /* dark background */
     color: #ffffff; /* white text */
 }
-/* p{
-    font-size: 1.5em;
-    margin-top: 0.83em;
-    margin-bottom: 0.83em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-} */
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Align items to the left */
-    margin-top: 50px; /* Adjust margin as needed */
-}
-
+/* Styles for input container */
 .input-container {
     margin-bottom: 10px;
     text-align: center;
 }
 
+/* Styles for input elements */
 input {
     width: 200px; /* Adjust width as needed */
     padding: 5px;
     margin-left: 5px;
 }
 
+/* Styles for buttons */
 button {
     padding: 10px 20px;
     font-size: 16px;
@@ -54,7 +43,10 @@ button:hover {
     background-color: #0056b3;
 }
 
-#back-btn{
+#back-btn {
+    position: fixed;
+    top: 60px; /* Adjust the top position as needed */
+    right: 20px;
     text-decoration: none;
     padding: 10px 20px;
     font-size: 16px;
@@ -63,32 +55,80 @@ button:hover {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    margin-top: 10px; /* Add some top margin */
+    display: block; /* Make it a block-level element */
 }
 
-#back-btn:hover{
+#back-btn:hover {
     background-color: #0056b3;
 }
 
-.center-content {
-    text-align: center; /* Center text horizontally */
+/* Styles for the main container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+    margin-top: 50px; /* Adjust margin as needed */
 }
 
+/* Styles for left side content */
+.left-side {
+    text-align: left; /* Align text to the left */
+    width: 100%; /* Occupy full width */
+}
+
+/* Styles for center content */
+.center-content {
+    text-align: center; /* Center text horizontally */
+    width: 30%; /* Occupy 30% of the width */
+}
+
+/* Styles for images inside center content */
 .center-content img {
     display: block; /* Ensure images are displayed as block elements */
     margin: 0 auto; /* Center images horizontally */
 }
 
+/* Styles for sideways center content */
 .center-content-sideways {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Align items to the left */
     align-items: center;
+    width: 100%; /* Occupy full width */
 }
 
+/* Styles for individual items inside sideways center content */
 .center-content-sideways > div {
-    margin: 0 10px; /* Adjust margin as needed */
+    margin: 0 10px; /* Add margin around divs */
 }
 
-/* Light/Dark Mode Toggle Button */
+/* Styles for rank containers */
+.rank-container {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center;
+    margin-bottom: 5px; /* Add margin between the rank containers */
+}
+
+/* Styles for individual items inside rank containers */
+.rank-container > div {
+    margin-right: 5px; /* Add space between tier and rank */
+}
+
+.data-container {
+    position: absolute; /* Position absolutely */
+    top: 70%; /* Align to the vertical center */
+    left: 50%; /* Align to the horizontal center */
+    transform: translate(-50%, -50%); /* Center the container */
+    
+    border: 2px solid #333; /* Border style */
+    border-radius: 10px; /* Rounded corners */
+    padding: 100px; /* Padding inside the border */
+    
+}
+
+
+/* Styles for dark mode toggle button */
 #mode-toggle {
     position: fixed;
     top: 20px;
@@ -106,18 +146,3 @@ button:hover {
     background-color: #0056b3;
 }
 
-.player-info {
-    text-align: center; /* Center align player info */
-}
-
-.player-info h1 {
-    margin-bottom: 5px; /* Adjust margin */
-}
-
-.player-info h3 {
-    margin-top: 0; /* Reset margin */
-}
-
-#playerIcon {
-    margin-top: 10px; /* Adjust margin */
-}
