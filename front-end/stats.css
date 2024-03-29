@@ -128,8 +128,3 @@ button:hover {
 #mode-toggle:hover {
     background-color: #0056b3;
 }
-
-/* Styles for player icon */
-#playerIcon {
-    margin-top: 10px; /* Adjust margin */
-}

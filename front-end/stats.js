@@ -53,8 +53,8 @@ document.querySelector('#playerIcon').appendChild(iconImg); // uploading solo ra
 const soloImg = document.createElement('img');
 if (soloTier == "N/A"){
     soloImg.src = 'Ranked Emblems/UNRANKED.png';
-    soloImg.style.width = '100%';
-    soloImg.style.height = '100%';   
+    soloImg.style.width = '120%';
+    soloImg.style.height = '120%';   
 } else {
     soloImg.src = 'Ranked Emblems/' + soloTier + '.png';
     soloImg.style.width = '60%';
