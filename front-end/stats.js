@@ -37,13 +37,13 @@ var summonerIconURL = 'https://ddragon.leagueoflegends.com/cdn/14.6.1/img/profil
 var championIconURL = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/'; // add champtionID.png
 
 // image and rank data for solo
-document.querySelector('#soloTier').innerHTML = "<h3> Ranked Solo " + soloTier + " " + soloRank + " " + soloLP + " LP </h3>";
+document.querySelector('#soloRank').innerHTML = "<h3> Ranked Solo " + soloTier + " " + soloRank + " " + soloLP + " LP </h3>";
 const soloImg = document.createElement('img');
 soloImg.src = 'Ranked Emblems/' + soloTier + '.png';
 soloImg.style.width = '20%';
 soloImg.style.height = '20%'; 
 // image and rank data for flex 
-document.querySelector('#flexTier').innerHTML = "<h3> Ranked Flex " + flexTier + " " + flexRank + " " + flexLP + " LP </h3>";
+document.querySelector('#flexRank').innerHTML = "<h3> Ranked Flex " + flexTier + " " + flexRank + " " + flexLP + " LP </h3>";
 const flexImg = document.createElement('img');
 flexImg.src = 'Ranked Emblems/' + flexTier + '.png';
 flexImg.style.width = '20%';
