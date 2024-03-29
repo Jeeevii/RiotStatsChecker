@@ -25,7 +25,7 @@ body.dark-mode {
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Align items to the left */
     margin-top: 50px; /* Adjust margin as needed */
 }
 
@@ -104,4 +104,20 @@ button:hover {
 
 #mode-toggle:hover {
     background-color: #0056b3;
+}
+
+.player-info {
+    text-align: center; /* Center align player info */
+}
+
+.player-info h1 {
+    margin-bottom: 5px; /* Adjust margin */
+}
+
+.player-info h3 {
+    margin-top: 0; /* Reset margin */
+}
+
+#playerIcon {
+    margin-top: 10px; /* Adjust margin */
 }
