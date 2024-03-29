@@ -42,6 +42,13 @@ var championIconURL = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol
 // ================================================================================================================================================================
 // data getting passed to website
 
+// adjusting profile icon size to match all available
+const iconImg = document.createElement('img');
+iconImg.src = summonerIconURL;
+iconImg.style.width = '60%';
+iconImg.style.height = '60%';  
+document.querySelector('#playerIcon').appendChild(iconImg); // uploading solo rank
+
 // solo tier edge case
 const soloImg = document.createElement('img');
 if (soloTier == "N/A"){
@@ -68,7 +75,6 @@ if (flexTier == "N/A"){
 // document.querySelector('#center-content-sideways').innerHTML = "<h3>" + ;
 document.querySelector('#playerName').innerHTML = "<h1>" + summonerName + " #"+ summonerTag + "</h1>"; // player name and tag
 document.querySelector('#playerLevel').innerHTML += "<h3 id = \"playerLvl\"> Level: " + summonerLevel + "</h3>"; // player level 
-document.querySelector('#playerIcon').innerHTML = "<img src = \"" + summonerIconURL + "\">"; // player icon 
 // rank image with rank data side by side
 document.querySelector('#soloRank').innerHTML = "<h3> Ranked Solo " + soloTier + " " + soloRank + " " + soloLP + " LP </h3>"; // image and rank data for solo
 document.querySelector('#flexRank').innerHTML = "<h3> Ranked Flex " + flexTier + " " + flexRank + " " + flexLP + " LP </h3>"; // image and rank data for flex 
