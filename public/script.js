@@ -20,7 +20,9 @@ document.getElementById('searchButton').addEventListener('click', async function
 
     const url = `/client-search?summonerName=${encodeURIComponent(summonerName)}&summonerTag=${encodeURIComponent(summonerTag)}`; // location of httpserver.js
     console.log("(HTML) Clicked! Sending and Receiving Data Now...");
-    const response = await fetch(localBaseURL+url);
+    const apiCallURL = publicBaseURL+url;
+    console.log(apiCallURL);
+    const response = await fetch(apiCallURL);
 
         // {
         //     method: 'POST'
@@ -48,7 +50,7 @@ document.getElementById('searchButton').addEventListener('click', async function
     // console.log("(HTML) Logging data from JavaScript into website console:");
 
     // // console.log("(HTML) parsed data from Python: ", userName, tagLine, iconID, sumLevel, soloTier, soloRank, soloLP, flexTier, flexRank, flexLP, champ1_ID, champ1_mastery, champ2_ID, champ2_mastery, champ3_ID, champ3_mastery); 
-    // // document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
+    document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
 
     // //Switch page at the end of getting data... 
     // changePage('stats.html', parsedData);
