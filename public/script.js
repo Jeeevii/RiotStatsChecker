@@ -3,6 +3,8 @@ const expiredAPIKey = "API Key is expired.";;
 const errorMsg = "An unexpected error occurred. Please try again.";
 const emptyMsg = "Please enter a summoner name and tag."
 const waitingMsg = "Data is loading, please wait...";
+const localBaseURL =  'http://127.0.0.1:5001/wpgg-6f4e2/us-central1/app';
+const publicBaseURL = 'https://us-central1-wpgg-6f4e2.cloudfunctions.net/app';
 
 document.getElementById('searchButton').addEventListener('click', async function() {
     const summonerName = document.getElementById('summonerName').value;
@@ -18,29 +20,38 @@ document.getElementById('searchButton').addEventListener('click', async function
 
     const url = `/client-search?summonerName=${encodeURIComponent(summonerName)}&summonerTag=${encodeURIComponent(summonerTag)}`; // location of httpserver.js
     console.log("(HTML) Clicked! Sending and Receiving Data Now...");
-    const response = await fetch(url); // sending GET request to client.js
+    const response = await fetch(localBaseURL+url);
+
+        // {
+        //     method: 'POST'
+        //     headers: {
+        //         "Content-type": "application/json"
+        //     },
+        //     body: 
+        // }); // sending GET request to client.js
     const data = await response.text();
-    const parsedData = JSON.parse(data); // parses python hashmap into an object (hashmap in js)
+    console.log(data);
+    // const parsedData = JSON.parse(data); // parses python hashmap into an object (hashmap in js)
 
-    if (parsedData.status === 'Not Found') {
-        document.getElementById('tempOutput').innerText = invalidSummonerMsg
-        return;
-    } 
-    else if (parsedData.status === 'Expired') {
-        document.getElementById('tempOutput').innerText = expiredAPIKey
-        return;
-    } 
-    else if (parsedData.status === 'Error') {
-        document.getElementById('tempOutput').innerText = errorMsg
-        return;
-    }
-    console.log("(HTML) Logging data from JavaScript into website console:");
+    // if (parsedData.status === 'Not Found') {
+    //     document.getElementById('tempOutput').innerText = invalidSummonerMsg
+    //     return;
+    // } 
+    // else if (parsedData.status === 'Expired') {
+    //     document.getElementById('tempOutput').innerText = expiredAPIKey
+    //     return;
+    // } 
+    // else if (parsedData.status === 'Error') {
+    //     document.getElementById('tempOutput').innerText = errorMsg
+    //     return;
+    // }
+    // console.log("(HTML) Logging data from JavaScript into website console:");
 
-    // console.log("(HTML) parsed data from Python: ", userName, tagLine, iconID, sumLevel, soloTier, soloRank, soloLP, flexTier, flexRank, flexLP, champ1_ID, champ1_mastery, champ2_ID, champ2_mastery, champ3_ID, champ3_mastery); 
-    // document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
+    // // console.log("(HTML) parsed data from Python: ", userName, tagLine, iconID, sumLevel, soloTier, soloRank, soloLP, flexTier, flexRank, flexLP, champ1_ID, champ1_mastery, champ2_ID, champ2_mastery, champ3_ID, champ3_mastery); 
+    // // document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
 
-    //Switch page at the end of getting data... 
-    changePage('stats.html', parsedData);
+    // //Switch page at the end of getting data... 
+    // changePage('stats.html', parsedData);
 });
 
 
@@ -88,3 +99,11 @@ if (isDarkModeStored === 'true') { // if dark mode was stored swap
     document.body.classList.add('dark-mode');
 }
 document.getElementById('mode-toggle').addEventListener('click', toggleDarkMode); // reading from button, if clicked call function to toggle dark mode
+
+async function getData(){
+
+}
+
+async function postData(){
+
+}

@@ -2,7 +2,26 @@ const express = require('express');
 const { spawn } = require('child_process');
 const { takeCoverage } = require('v8');
 
-const app = express();
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBWW-EWEa9vZDfoFzDWKyLDL2Zi9eeHSYA",
+  authDomain: "wpgg-6f4e2.firebaseapp.com",
+  projectId: "wpgg-6f4e2",
+  storageBucket: "wpgg-6f4e2.appspot.com",
+  messagingSenderId: "939610303109",
+  appId: "1:939610303109:web:8c220462037799e8a857ec"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// const app = express();
+const express = express();
 const port = 3000;
 
 app.use(express.static('front-end'));
