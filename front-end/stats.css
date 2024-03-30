@@ -73,6 +73,7 @@ button:hover {
 
 /* Styles for left side content */
 .left-side {
+    
     text-align: left; /* Align text to the left */
     width: 100%; /* Occupy full width */
 }
@@ -116,15 +117,26 @@ button:hover {
 }
 
 .data-container {
-    position: absolute; /* Position absolutely */
-    top: 70%; /* Align to the vertical center */
-    left: 50%; /* Align to the horizontal center */
+    position: absolute; /* Position the container absolutely */
+    top: 180%; /* Align the top of the container to the vertical center */
+    left: 55%; /* Align the left side of the container to the horizontal center */
     transform: translate(-50%, -50%); /* Center the container */
-    
+    width: 40%; /* Adjust the width of the container */
     border: 2px solid #333; /* Border style */
     border-radius: 10px; /* Rounded corners */
-    padding: 100px; /* Padding inside the border */
-    
+    padding: 20px; /* Padding inside the container */
+}
+
+.match-entry {
+    margin-bottom: 20px; /* Add bottom margin to separate match entries */
+    padding: 10px; /* Padding inside each match entry */
+    background-color: #add8e6; /* Light blue background color */
+    border: 2px solid #333; /* Dark border */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.match-entry h3 {
+    margin-top: 0; /* Remove top margin for the heading */
 }
 
 

@@ -36,20 +36,24 @@ matchStats = JSON.parse(matchStats);
 var summonerIconURL = 'https://ddragon.leagueoflegends.com/cdn/14.6.1/img/profileicon/' + playerIcon + ".png"; // using datadragon to get icon from iconID
 var championIconURL = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/'; // add champtionID.png
 
-
-// getting match history data and displaying into border
-const matchHistoryDiv = document.querySelector('.match-history');
-// Get the last 5 matches from matchStats array
-const lastFiveMatches = matchStats.slice(-5);
 // hashmap with QueueIDs: Id = 720 --> Clash, 450 --> ARAM, 440 --> Ranked Flex, 420 --> Ranked Solo
 const gameModes = {
-    720: 'Clash',
+    720: 'ARAM Clash',
+    700: 'Clash',
     450: 'ARAM',
     440: 'Ranked Flex',
-    420: 'Ranked Solo'
+    420: 'Ranked Solo',
+    1020: 'One For All',
+    0: 'Custom Game',
+    400: 'Normals',
+
 };
 
-lastFiveMatches.forEach((match, index) => { // for loop basically? 
+// Populate match history data
+const matchHistoryDiv = document.querySelector('.match-history-container');
+
+// Loop through all matches in matchStats array and create HTML elements for each match
+matchStats.forEach((match, index) => {
     const matchDiv = document.createElement('div');
     matchDiv.classList.add('match-entry');
     matchDiv.style.display = 'flex';
@@ -57,6 +61,7 @@ lastFiveMatches.forEach((match, index) => { // for loop basically?
     matchDiv.style.alignItems = 'center';
     // Determine the game mode from QueueID
     const gameMode = gameModes[match.queueId] || 'Unknown';
+
     // Construct HTML content for each match
     matchDiv.innerHTML = `
     <p style="margin-left: 10px; padding: 20px;">Mode: ${gameMode}</p>
