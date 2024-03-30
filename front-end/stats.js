@@ -58,17 +58,19 @@ matchStats.forEach((match, index) => {
     const matchDiv = document.createElement('div');
     matchDiv.classList.add('match-entry');
     matchDiv.style.display = 'flex';
+    matchDiv.style.justifyContent = 'space-between';
     matchDiv.style.alignItems = 'center';
-    matchDiv.style.alignContent = 'space-around';
+    // matchDiv.style
     // Determine the game mode from QueueID
     const gameMode = gameModes[match.queueId] || 'Unknown';
     // Construct HTML content for each match
     matchDiv.innerHTML = `
-    <img src="${championImgNameURL}" style="width: 8%; height: 8%; margin-left: 5%;">
-    <p style="margin-left: 5%; padding: 2%;">Mode: ${gameMode}</p>
-    <p style="margin-left: 5%; padding: 2%;">${match.kills} / ${match.deaths} / ${match.assists}</p>
-    <p style="margin-left: 5%; padding: 2%;">Lane: ${match.lane}</p>
-    <p style="margin-left: 5%; padding: 2%;">${match.win ? 'Victory' : 'Defeat'}</p> `;
+    <img src="${championImgNameURL}" style="width: 8%; height: 8%;">
+    <p>${gameMode}</p>
+    <p>${match.kills} / ${match.deaths} / ${match.assists}</p>
+    <p>${match.lane}</p>
+    <p>${match.win ? 'Victory' : 'Defeat'}</p>
+    `;
     matchHistoryDiv.appendChild(matchDiv);
 });
 
@@ -80,7 +82,8 @@ matchStats.forEach((match, index) => {
 const iconImg = document.createElement('img');
 iconImg.src = summonerIconURL;
 iconImg.style.width = '60%';
-iconImg.style.height = '60%';  
+iconImg.style.height = '60%'; 
+iconImg.style.borderRadius = '50%'; 
 document.querySelector('#playerIcon').appendChild(iconImg); // uploading profile icon
 
 // solo tier edge case

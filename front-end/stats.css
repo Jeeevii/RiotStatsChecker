@@ -1,7 +1,7 @@
 /* Base styles for body */
 body {
     display: flex;
-    justify-content: flex-start; /* Align everything to the left */
+    justify-content: flex-start;
     align-items: flex-start;
     height: 100vh;
     margin: 0;
@@ -12,7 +12,7 @@ body {
 /* Dark Mode Styles */
 body.dark-mode {
     background-color: #333333; /* dark background */
-    color: #ffffff; /* white text */
+    color: #f3f3f3; /* white text */
 }
 
 /* Styles for input container */
@@ -120,7 +120,7 @@ button:hover {
 }
 
 .match-entry {
-    margin-bottom: 20px; /* Add bottom margin to separate match entries */
+    margin-bottom: 20px; /*Add bottom margin to separate match entries */
     padding: 10px; /* Padding inside each match entry */
     background-color: #add8e6; /* Light blue background color */
     border: 3px solid #333; /* Dark border */
@@ -130,9 +130,14 @@ button:hover {
     flex-direction: row; /* Horizontal */
     justify-content: space-around; /* Center */
     margin-right: 10px;
-    padding: 2%;
+    /* padding: 2%; */
 }
 
+.match-entry p{
+    width: 20%; 
+    margin: 0px 10px; 
+    padding: 20px;
+}
 /* Styles for dark mode toggle button */
 #mode-toggle {
     position: fixed;
