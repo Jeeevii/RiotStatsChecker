@@ -52,18 +52,22 @@ const gameModes = {
 lastFiveMatches.forEach((match, index) => { // for loop basically? 
     const matchDiv = document.createElement('div');
     matchDiv.classList.add('match-entry');
+    matchDiv.style.display = 'flex';
+    matchDiv.style.flexDirection = 'row';
+    matchDiv.style.alignItems = 'center';
     // Determine the game mode from QueueID
     const gameMode = gameModes[match.queueId] || 'Unknown';
     // Construct HTML content for each match
     matchDiv.innerHTML = `
-        <h3>Game ${index + 1}</h3>
-        <p>Mode: ${gameMode}</p>
-        <p>${match.champion}</p>
-        <p>${match.kills} / ${match.deaths} / ${match.assists}</p>
-        <p>Lane: ${match.lane}</p>
-        <p>${match.win ? 'Victory' : 'Defeat'}</p>
+    <p style="margin-left: 10px; padding: 20px;">Mode: ${gameMode}</p>
+    <p style="margin-left: 10px; padding: 20px;">${match.champion}</p>
+    <p style="margin-left: 10px; padding: 20px;">${match.kills} / ${match.deaths} / ${match.assists}</p>
+    <p style="margin-left: 10px; padding: 20px;">Lane: ${match.lane}</p>
+    <p style="margin-left: 10px; padding: 20px;">${match.win ? 'Victory' : 'Defeat'}</p>
     `;
-
+    matchDiv.style.border = '1px solid black';
+    matchDiv.style.borderRadius = '10px';
+    matchDiv.style.borderWidth = '3px';
     matchHistoryDiv.appendChild(matchDiv);
 });
 
