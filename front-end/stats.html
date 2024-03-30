@@ -8,44 +8,43 @@
 </head>
 <body>
     <div class="container">
-        <div class="left-side">
-            <div class="center-content">
-                <div id="playerName" class="player-name"></div>
-                <div id="playerLevel" class="player-level">
-                    <div id="playerIcon"> </div> <!-- Player Level is under icon IDK HOW -->
+        <div class="center-content">
+            <div id="playerName" class="player-name"></div>
+            <div id="playerLevel" class="player-level">
+                <div id="playerIcon"> </div> <!-- Player Level is under icon IDK HOW -->
+            </div>
+            <!-- Solo Rank and Rank data side by side -->
+            <div id="soloTierRank" class="rank-container">
+                <div id="soloTier"> </div>
+                <div id="soloRank"> </div>
+            </div>
+            <!-- Flex Rank and Rank data side by side -->
+            <div id="flexTierRank" class="rank-container">
+                <div id="flexTier"> </div>
+                <div id="flexRank"> </div>  
+            </div>
+            <!-- Top 3 champs side by side, with mastery points under -->
+            <h2> Top 3 Most Played Champions</h2>
+            <div class="center-content-sideways">
+                <div>
+                    <div id="champ2"></div>
+                    <div id="champ2_mastery"></div>
                 </div>
-                <!-- Solo Rank and Rank data side by side -->
-                <div id="soloTierRank" class="rank-container">
-                    <div id="soloTier"> </div>
-                    <div id="soloRank"> </div>
+                <div>
+                    <div id="champ1"></div>
+                    <div id="champ1_mastery"></div>
                 </div>
-                <!-- Flex Rank and Rank data side by side -->
-                <div id="flexTierRank" class="rank-container">
-                    <div id="flexTier"> </div>
-                    <div id="flexRank"> </div>  
+                <div>
+                    <div id="champ3"></div>
+                    <div id="champ3_mastery"></div>
                 </div>
-                <!-- Top 3 champs side by side, with mastery points under -->
-                <h2> Top 3 Most Played Champions</h2>
-                <div class="center-content-sideways">
-                    <div>
-                        <div id="champ2"></div>
-                        <div id="champ2_mastery"></div>
-                    </div>
-                    <div>
-                        <div id="champ1"></div>
-                        <div id="champ1_mastery"></div>
-                    </div>
-                    <div>
-                        <div id="champ3"></div>
-                        <div id="champ3_mastery"></div>
-                    </div>
-                </div> 
-                        
-                <div class="data-container">
-                    <h2>Match History</h2>
-                    <div class="match-history-container">
-                        <!-- Match history entries will be populated here dynamically -->
-                    </div>
+            </div> 
+                    
+            <div class="data-container">
+                <h2>Match History</h2>
+                <div class="match-history-container">
+                    <!-- Match history entries will be populated here dynamically -->
+                    
                 </div>
             </div>
         </div>

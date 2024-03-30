@@ -24,7 +24,7 @@ var champ3_mastery = localStorage["champ3_mastery"];
 var matchStats = localStorage["matchStats"];
 matchStats = JSON.parse(matchStats);
 
-//console.log(matchStats);
+console.log(matchStats);
 //console.log(matchStats[0]); // Gets Basic Stats of most recent match
 // console.log(matchStats[0]['kills']);
 
@@ -35,7 +35,6 @@ matchStats = JSON.parse(matchStats);
 // using parsed data and presenting them in a cooler way
 var summonerIconURL = 'https://ddragon.leagueoflegends.com/cdn/14.6.1/img/profileicon/' + playerIcon + ".png"; // using datadragon to get icon from iconID
 var championIconURL = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/'; // add champtionID.png
-
 // hashmap with QueueIDs: Id = 720 --> Clash, 450 --> ARAM, 440 --> Ranked Flex, 420 --> Ranked Solo
 const gameModes = {
     720: 'ARAM Clash',
@@ -45,7 +44,8 @@ const gameModes = {
     420: 'Ranked Solo',
     1020: 'One For All',
     0: 'Custom Game',
-    400: 'Normals',
+    490: 'Normals',
+    400: 'Draft Pick'
 
 };
 
@@ -54,25 +54,21 @@ const matchHistoryDiv = document.querySelector('.match-history-container');
 
 // Loop through all matches in matchStats array and create HTML elements for each match
 matchStats.forEach((match, index) => {
+    var championImgNameURL = 'https://opgg-static.akamaized.net/meta/images/lol/14.6.1/champion/' + match.champion + '.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160,h_160&v=1710914129937'
     const matchDiv = document.createElement('div');
     matchDiv.classList.add('match-entry');
     matchDiv.style.display = 'flex';
-    matchDiv.style.flexDirection = 'row';
     matchDiv.style.alignItems = 'center';
+    matchDiv.style.alignContent = 'space-around';
     // Determine the game mode from QueueID
     const gameMode = gameModes[match.queueId] || 'Unknown';
-
     // Construct HTML content for each match
     matchDiv.innerHTML = `
-    <p style="margin-left: 10px; padding: 20px;">Mode: ${gameMode}</p>
-    <p style="margin-left: 10px; padding: 20px;">${match.champion}</p>
-    <p style="margin-left: 10px; padding: 20px;">${match.kills} / ${match.deaths} / ${match.assists}</p>
-    <p style="margin-left: 10px; padding: 20px;">Lane: ${match.lane}</p>
-    <p style="margin-left: 10px; padding: 20px;">${match.win ? 'Victory' : 'Defeat'}</p>
-    `;
-    matchDiv.style.border = '1px solid black';
-    matchDiv.style.borderRadius = '10px';
-    matchDiv.style.borderWidth = '3px';
+    <img src="${championImgNameURL}" style="width: 8%; height: 8%; margin-left: 5%;">
+    <p style="margin-left: 5%; padding: 2%;">Mode: ${gameMode}</p>
+    <p style="margin-left: 5%; padding: 2%;">${match.kills} / ${match.deaths} / ${match.assists}</p>
+    <p style="margin-left: 5%; padding: 2%;">Lane: ${match.lane}</p>
+    <p style="margin-left: 5%; padding: 2%;">${match.win ? 'Victory' : 'Defeat'}</p> `;
     matchHistoryDiv.appendChild(matchDiv);
 });
 
@@ -131,10 +127,14 @@ document.querySelector('#champ3_mastery').innerHTML = "<h2>" + champ3_mastery + 
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     const isDarkMode = document.body.classList.contains('dark-mode'); // store mode in localStorage for user
+
     localStorage.setItem('darkMode', isDarkMode);
-}
+    localStorage.setItem('darkMode', isDarkContainer);
+}  
 const isDarkModeStored = localStorage.getItem('darkMode');
+
 if (isDarkModeStored === 'true') { // if dark mode was stored swap 
     document.body.classList.add('dark-mode');
+
 }
 document.getElementById('mode-toggle').addEventListener('click', toggleDarkMode); // reading from button, if clicked call function to toggle dark mode
