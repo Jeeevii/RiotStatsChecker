@@ -46,9 +46,9 @@ const gameModes = {
     0: 'Custom Game',
     490: 'Normals',
     400: 'Draft Pick'
-
 };
 
+const nonFun = [700, 440, 420, 490, 400];
 // Populate match history data
 const matchHistoryDiv = document.querySelector('.match-history-container');
 
@@ -60,16 +60,19 @@ matchStats.forEach((match, index) => {
     matchDiv.style.display = 'flex';
     matchDiv.style.justifyContent = 'space-between';
     matchDiv.style.alignItems = 'center';
+    if (!nonFun.includes(match.queueId)) {
+        match.lane = 'NONE';
+    }
     // matchDiv.style
     // Determine the game mode from QueueID
     const gameMode = gameModes[match.queueId] || 'Unknown';
     // Construct HTML content for each match
     matchDiv.innerHTML = `
     <img src="${championImgNameURL}" style="width: 8%; height: 8%;">
-    <p>${gameMode}</p>
-    <p>${match.kills} / ${match.deaths} / ${match.assists}</p>
-    <p>${match.lane}</p>
-    <p>${match.win ? 'Victory' : 'Defeat'}</p>
+    <h3>${gameMode}</h3>
+    <h3>${match.kills} / ${match.deaths} / ${match.assists}</h3>
+    <h3>${match.lane}</h3>
+    <h3>${match.win ? 'Victory' : 'Defeat'}</h3>
     `;
     matchHistoryDiv.appendChild(matchDiv);
 });

@@ -79,7 +79,6 @@ button:hover {
 
 /* Styles for images inside center content */
 .center-content img {
-    display: block; /* Ensure images are displayed as block elements */
     margin: 0 auto; /* Center images horizontally */
 }
 
@@ -129,11 +128,17 @@ button:hover {
     display: flex; /* Display */
     flex-direction: row; /* Horizontal */
     justify-content: space-around; /* Center */
-    margin-right: 10px;
     /* padding: 2%; */
 }
 
-.match-entry p{
+.match-entry h3 {
+    width: 20%; 
+    margin: 0px 10px; 
+    padding: 20px;
+    color: #000000;
+}
+
+.match-entry img {
     width: 20%; 
     margin: 0px 10px; 
     padding: 20px;
