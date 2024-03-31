@@ -1,4 +1,9 @@
 Only Flex Acc: Mimic #Core
-No Rank: Volts #eon // doesn't work
+No Rank: Volts #eon // doesn't work, lakemoi #NA1
 Both Ranks: Jeevi #0001, Voltsz #NA1 
 No Games: RedCombustion #NA1 PorterDiningHall #NA1
+
+puuid: 
+lakemoi #NA1: RCInHiiYGDs5-S6ApG5v72A0Gp9DQDmhmmNRekCesckiovD02HFUBTWEu6PIcy3brO6rCnkWclqIeQ
+voltsz #NA1:  BFPTkH90z5l6bkt4FNr-OOK6t7QP1LT0qg5YmLUmtUYGv4dy2F_3iWe0Zeb1ZMBNKnZ_pqtiAmWBNg
+jeevi #0001:  j2SrgvE4uV9GzGBOKjwEcbiIok0qj3hMYE7kiZGnOIBz-0CCjFqlptD8iWidzpw5w0L8HIrZrOX5pw

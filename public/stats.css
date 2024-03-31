@@ -1,7 +1,7 @@
 /* Base styles for body */
 body {
     display: flex;
-    justify-content: flex-start; /* Align everything to the left */
+    justify-content: flex-start;
     align-items: flex-start;
     height: 100vh;
     margin: 0;
@@ -12,7 +12,7 @@ body {
 /* Dark Mode Styles */
 body.dark-mode {
     background-color: #333333; /* dark background */
-    color: #ffffff; /* white text */
+    color: #f3f3f3; /* white text */
 }
 
 /* Styles for input container */
@@ -71,12 +71,6 @@ button:hover {
     margin-top: 50px; /* Adjust margin as needed */
 }
 
-/* Styles for left side content */
-.left-side {
-    text-align: left; /* Align text to the left */
-    width: 100%; /* Occupy full width */
-}
-
 /* Styles for center content */
 .center-content {
     text-align: center; /* Center text horizontally */
@@ -85,7 +79,6 @@ button:hover {
 
 /* Styles for images inside center content */
 .center-content img {
-    display: block; /* Ensure images are displayed as block elements */
     margin: 0 auto; /* Center images horizontally */
 }
 
@@ -116,18 +109,40 @@ button:hover {
 }
 
 .data-container {
-    position: absolute; /* Position absolutely */
-    top: 70%; /* Align to the vertical center */
-    left: 50%; /* Align to the horizontal center */
+    position: absolute; /* Position the container absolutely */
+    top: 120%; /* Align the top of the container to the vertical center */
+    left: 55%; /* Align the left side of the container to the horizontal center */
     transform: translate(-50%, -50%); /* Center the container */
-    
-    border: 2px solid #333; /* Border style */
+    width: 40%; /* Adjust the width of the container */
     border-radius: 10px; /* Rounded corners */
-    padding: 100px; /* Padding inside the border */
-    
+    padding: 20px; /* Padding inside the container */
 }
 
+.match-entry {
+    margin-bottom: 20px; /*Add bottom margin to separate match entries */
+    padding: 10px; /* Padding inside each match entry */
+    background-color: #add8e6; /* Light blue background color */
+    border: 3px solid #333; /* Dark border */
+    border-radius: 10px; /* Rounded corners */
+    
+    display: flex; /* Display */
+    flex-direction: row; /* Horizontal */
+    justify-content: space-around; /* Center */
+    /* padding: 2%; */
+}
 
+.match-entry h3 {
+    width: 20%; 
+    margin: 0px 10px; 
+    padding: 20px;
+    color: #000000;
+}
+
+.match-entry img {
+    width: 20%; 
+    margin: 0px 10px; 
+    padding: 20px;
+}
 /* Styles for dark mode toggle button */
 #mode-toggle {
     position: fixed;
@@ -145,4 +160,3 @@ button:hover {
 #mode-toggle:hover {
     background-color: #0056b3;
 }
-

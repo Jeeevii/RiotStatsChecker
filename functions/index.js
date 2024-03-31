@@ -181,9 +181,11 @@ function handleStatusCodes(status){
         throw Error('Invalid RiotID+Tag');
     }
     else if(status == 429){
+        // setTimeout(120000); // 2 minute timeout
         throw Error('Server is busy, Try again later.');
     }
     else if(status == 401 || status == 403){
         throw Error('Unexpected Error');
     }
+    return; 
 }

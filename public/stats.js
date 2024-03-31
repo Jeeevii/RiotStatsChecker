@@ -24,7 +24,7 @@ var champ3_mastery = localStorage["champ3_mastery"];
 var matchStats = localStorage["matchStats"];
 matchStats = JSON.parse(matchStats);
 
-//console.log(matchStats);
+console.log(matchStats);
 //console.log(matchStats[0]); // Gets Basic Stats of most recent match
 // console.log(matchStats[0]['kills']);
 
@@ -35,35 +35,45 @@ matchStats = JSON.parse(matchStats);
 // using parsed data and presenting them in a cooler way
 var summonerIconURL = 'https://ddragon.leagueoflegends.com/cdn/14.6.1/img/profileicon/' + playerIcon + ".png"; // using datadragon to get icon from iconID
 var championIconURL = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/'; // add champtionID.png
-
-
-// getting match history data and displaying into border
-const matchHistoryDiv = document.querySelector('.match-history');
-// Get the last 5 matches from matchStats array
-const lastFiveMatches = matchStats.slice(-5);
 // hashmap with QueueIDs: Id = 720 --> Clash, 450 --> ARAM, 440 --> Ranked Flex, 420 --> Ranked Solo
 const gameModes = {
-    720: 'Clash',
+    720: 'ARAM Clash',
+    700: 'Clash',
     450: 'ARAM',
     440: 'Ranked Flex',
-    420: 'Ranked Solo'
+    420: 'Ranked Solo',
+    1020: 'One For All',
+    0: 'Custom Game',
+    490: 'Normals',
+    400: 'Draft Pick'
 };
 
-lastFiveMatches.forEach((match, index) => { // for loop basically? 
+const nonFun = [700, 440, 420, 490, 400];
+// Populate match history data
+const matchHistoryDiv = document.querySelector('.match-history-container');
+
+// Loop through all matches in matchStats array and create HTML elements for each match
+matchStats.forEach((match, index) => {
+    var championImgNameURL = 'https://opgg-static.akamaized.net/meta/images/lol/14.6.1/champion/' + match.champion + '.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160,h_160&v=1710914129937'
     const matchDiv = document.createElement('div');
     matchDiv.classList.add('match-entry');
+    matchDiv.style.display = 'flex';
+    matchDiv.style.justifyContent = 'space-between';
+    matchDiv.style.alignItems = 'center';
+    if (!nonFun.includes(match.queueId)) {
+        match.lane = 'NONE';
+    }
+    // matchDiv.style
     // Determine the game mode from QueueID
     const gameMode = gameModes[match.queueId] || 'Unknown';
     // Construct HTML content for each match
     matchDiv.innerHTML = `
-        <h3>Game ${index + 1}</h3>
-        <p>Mode: ${gameMode}</p>
-        <p>${match.champion}</p>
-        <p>${match.kills} / ${match.deaths} / ${match.assists}</p>
-        <p>Lane: ${match.lane}</p>
-        <p>${match.win ? 'Victory' : 'Defeat'}</p>
+    <img src="${championImgNameURL}" style="width: 8%; height: 8%;">
+    <h3>${gameMode}</h3>
+    <h3>${match.kills} / ${match.deaths} / ${match.assists}</h3>
+    <h3>${match.lane}</h3>
+    <h3>${match.win ? 'Victory' : 'Defeat'}</h3>
     `;
-
     matchHistoryDiv.appendChild(matchDiv);
 });
 
@@ -75,7 +85,8 @@ lastFiveMatches.forEach((match, index) => { // for loop basically?
 const iconImg = document.createElement('img');
 iconImg.src = summonerIconURL;
 iconImg.style.width = '60%';
-iconImg.style.height = '60%';  
+iconImg.style.height = '60%'; 
+iconImg.style.borderRadius = '50%'; 
 document.querySelector('#playerIcon').appendChild(iconImg); // uploading profile icon
 
 // solo tier edge case
@@ -122,10 +133,14 @@ document.querySelector('#champ3_mastery').innerHTML = "<h2>" + champ3_mastery + 
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     const isDarkMode = document.body.classList.contains('dark-mode'); // store mode in localStorage for user
+
     localStorage.setItem('darkMode', isDarkMode);
-}
+    localStorage.setItem('darkMode', isDarkContainer);
+}  
 const isDarkModeStored = localStorage.getItem('darkMode');
+
 if (isDarkModeStored === 'true') { // if dark mode was stored swap 
     document.body.classList.add('dark-mode');
+
 }
 document.getElementById('mode-toggle').addEventListener('click', toggleDarkMode); // reading from button, if clicked call function to toggle dark mode
