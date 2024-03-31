@@ -1,26 +1,15 @@
-# Riot Stats Checker
+# Welcome to our Riot Stats Checker Project - WP.GG
 
-This is a simple web application for fetching and displaying summoner stats from the Riot Games API.
+Hello and welcome to the Riot Stats Checker project! This project was born out of a week-long spring break adventure by a group of friends: Alex, Kevin, and myself, Jeevi.
 
-## Basic Setup for Developers
+## About the Project
 
-### Prerequisites
-- Node.js installed on your machine
-- Express installed
-- Pip installed with requests and json
+During our break, we set out to create a tool that allows League of Legends players to easily check their in-game statistics. We initially began by developing a Python script to handle all the data fetching. However, we soon realized that our chosen platform, Firebase, didn't support Python. With quick thinking and adaptability, we seamlessly transitioned to using JavaScript for our backend needs.
 
-### Installation
+## How to Use
 
-#### Install Express
-command: npm install express
+Our Riot Stats Checker provides a simple interface for users to input their summoner name and view their stats. With just a few clicks, you can access information about your top champions, match history, and more!
 
-#### Install Pip
-command: pip install requests
+## Get Started
 
-Just follow what ever the terminal is asking you to do
-
-### Running the Server
-Start the server using the following 
-command: node httpserver.js
-
-This will start the server, and you can access the web application in your browser.
+Ready to dive in? Check out the project [here](https://wpgg-6f4e2.web.app/index.html) and start exploring your League of Legends statistics today!
