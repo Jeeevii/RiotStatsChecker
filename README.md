@@ -1,6 +1,12 @@
 # Welcome to our Riot Stats Checker Project - WP.GG
 
-Hello and welcome to the Riot Stats Checker project! This project was born out of a week-long spring break adventure by a group of friends: Alex, Kevin, and myself, Jeevi.
+Hello and welcome to the Riot Stats Checker project, WP.GG for short! This full stack project took me and my friends and about the entirety of our 1-week spring break to finish, but I'm very happy about our progress! Planning on adding more implementations later in the year, and potentially during summer break. 
+
+## Developers 
+
+Jeevi - [Linkedlin](https://www.linkedin.com/in/jeevithan-mahenthran/)
+Alex - [Linkedlin](https://www.linkedin.com/in/alexander-lee-855a96236/)
+Kevin - [Linkedlin](https://www.linkedin.com/in/hanlin-huang-6aa4131ba/) 
 
 ## About the Project
 
