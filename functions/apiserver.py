@@ -1,6 +1,8 @@
 import sys
 import requests
 import json
+## Note: Outdated and no longer in use!
+
 
 # =================================================================================================
 # helper functions to make life easier 
