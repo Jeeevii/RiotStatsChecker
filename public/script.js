@@ -24,36 +24,28 @@ document.getElementById('searchButton').addEventListener('click', async function
     console.log(apiCallURL);
     const response = await fetch(apiCallURL);
 
-        // {
-        //     method: 'POST'
-        //     headers: {
-        //         "Content-type": "application/json"
-        //     },
-        //     body: 
-        // }); // sending GET request to client.js
     const data = await response.text();
     console.log(data);
-    // const parsedData = JSON.parse(data); // parses python hashmap into an object (hashmap in js)
+    const parsedData = JSON.parse(data); // parses python hashmap into an object (hashmap in js)
 
-    // if (parsedData.status === 'Not Found') {
-    //     document.getElementById('tempOutput').innerText = invalidSummonerMsg
-    //     return;
-    // } 
-    // else if (parsedData.status === 'Expired') {
-    //     document.getElementById('tempOutput').innerText = expiredAPIKey
-    //     return;
-    // } 
-    // else if (parsedData.status === 'Error') {
-    //     document.getElementById('tempOutput').innerText = errorMsg
-    //     return;
-    // }
+    if (parsedData.status === 'Not Found') {
+        document.getElementById('tempOutput').innerText = invalidSummonerMsg
+        return;
+    } 
+    else if (parsedData.status === 'Expired') {
+        document.getElementById('tempOutput').innerText = expiredAPIKey
+        return;
+    } 
+    else if (parsedData.status === 'Error') {
+        document.getElementById('tempOutput').innerText = errorMsg
+        return;
+    }
     // console.log("(HTML) Logging data from JavaScript into website console:");
 
     // // console.log("(HTML) parsed data from Python: ", userName, tagLine, iconID, sumLevel, soloTier, soloRank, soloLP, flexTier, flexRank, flexLP, champ1_ID, champ1_mastery, champ2_ID, champ2_mastery, champ3_ID, champ3_mastery); 
-    document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
-
+    // document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
     // //Switch page at the end of getting data... 
-    // changePage('stats.html', parsedData);
+    changePage('stats.html', parsedData);
 });
 
 
@@ -64,6 +56,7 @@ function changePage(file, parsedData) {
 
     window.location.href = file; //Change current page to param file(ie. stats.html)
     // account data
+
     localStorage["playerName"] = parsedData.gameName; // Used Local Storage to store playerName and playerTag Details
     localStorage["playerTag"] = parsedData.tagLine;
     localStorage["iconID"] = parsedData.iconID;
@@ -101,11 +94,3 @@ if (isDarkModeStored === 'true') { // if dark mode was stored swap
     document.body.classList.add('dark-mode');
 }
 document.getElementById('mode-toggle').addEventListener('click', toggleDarkMode); // reading from button, if clicked call function to toggle dark mode
-
-async function getData(){
-
-}
-
-async function postData(){
-
-}
