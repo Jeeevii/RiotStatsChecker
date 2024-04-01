@@ -20,7 +20,7 @@ document.getElementById('searchButton').addEventListener('click', async function
 
     const url = `/client-search?summonerName=${encodeURIComponent(summonerName)}&summonerTag=${encodeURIComponent(summonerTag)}`; // location of httpserver.js
     console.log("(HTML) Clicked! Sending and Receiving Data Now...");
-    const apiCallURL = localBaseURL+url;
+    const apiCallURL = publicBaseURL+url;
     console.log(apiCallURL);
     const response = await fetch(apiCallURL);
 

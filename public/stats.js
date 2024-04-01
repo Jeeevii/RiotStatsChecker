@@ -135,7 +135,7 @@ document.querySelector('#champ3-mastery').innerHTML = "<h2>" + champ3_mastery + 
 // document.querySelector('#champ2-data').style.width = '30%';
 // document.querySelector('#champ3-data').style.width = '30%';
 
-
+console.log('Date: ' + Date.now());
 
 // function referenced from gbt to swap between light and dark mode using local storage system
 function toggleDarkMode() {
