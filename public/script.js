@@ -3,6 +3,8 @@ const expiredAPIKey = "API Key is expired.";;
 const errorMsg = "An unexpected error occurred. Please try again.";
 const emptyMsg = "Please enter a summoner name and tag."
 const waitingMsg = "Data is loading, please wait...";
+const localBaseURL =  'http://127.0.0.1:5001/wpgg-6f4e2/us-central1/app';
+const publicBaseURL = 'https://us-central1-wpgg-6f4e2.cloudfunctions.net/app';
 
 document.getElementById('searchButton').addEventListener('click', async function() {
     const summonerName = document.getElementById('summonerName').value;
@@ -18,8 +20,12 @@ document.getElementById('searchButton').addEventListener('click', async function
 
     const url = `/client-search?summonerName=${encodeURIComponent(summonerName)}&summonerTag=${encodeURIComponent(summonerTag)}`; // location of httpserver.js
     console.log("(HTML) Clicked! Sending and Receiving Data Now...");
-    const response = await fetch(url); // sending GET request to client.js
+    const apiCallURL = publicBaseURL+url;
+    console.log(apiCallURL);
+    const response = await fetch(apiCallURL);
+
     const data = await response.text();
+    console.log(data);
     const parsedData = JSON.parse(data); // parses python hashmap into an object (hashmap in js)
 
     if (parsedData.status === 'Not Found') {
@@ -34,12 +40,11 @@ document.getElementById('searchButton').addEventListener('click', async function
         document.getElementById('tempOutput').innerText = errorMsg
         return;
     }
-    console.log("(HTML) Logging data from JavaScript into website console:");
+    // console.log("(HTML) Logging data from JavaScript into website console:");
 
-    // console.log("(HTML) parsed data from Python: ", userName, tagLine, iconID, sumLevel, soloTier, soloRank, soloLP, flexTier, flexRank, flexLP, champ1_ID, champ1_mastery, champ2_ID, champ2_mastery, champ3_ID, champ3_mastery); 
+    // // console.log("(HTML) parsed data from Python: ", userName, tagLine, iconID, sumLevel, soloTier, soloRank, soloLP, flexTier, flexRank, flexLP, champ1_ID, champ1_mastery, champ2_ID, champ2_mastery, champ3_ID, champ3_mastery); 
     // document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
-
-    //Switch page at the end of getting data... 
+    // //Switch page at the end of getting data... 
     changePage('stats.html', parsedData);
 });
 
@@ -51,6 +56,7 @@ function changePage(file, parsedData) {
 
     window.location.href = file; //Change current page to param file(ie. stats.html)
     // account data
+
     localStorage["playerName"] = parsedData.gameName; // Used Local Storage to store playerName and playerTag Details
     localStorage["playerTag"] = parsedData.tagLine;
     localStorage["iconID"] = parsedData.iconID;

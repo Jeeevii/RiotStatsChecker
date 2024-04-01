@@ -18,4 +18,19 @@ Our Riot Stats Checker provides a simple interface for users to input their summ
 
 ## Get Started
 
+This will start the server, and you can access the web application in your browser.
+
+### Check out the website 
 Ready to dive in? Check out the project [here](https://wpgg-6f4e2.web.app/index.html) and start exploring your League of Legends statistics today!
+
+### This website is using Riot API's which expire every day
+Thus, to actually use this app, contact one of the contributers to this github to refresh the Riot API to use
+
+### Potential Upgrades/Updates to this project
+1) Using an actual database(firestore) to store information about users to avoid using localStorage and always refreshing 
+and calling user API --> Helps avoid using Riot API too much?
+2) Create a User Account system for no apparent reason but it looks cool?(firebase auth)
+3) Fix Styling more to look like a better and proper website
+4) Get more data(ie. winrates of each champ per patch?)
+5) Develop an API that allows developers to use this data of calculated winrates per champ
+
