@@ -68,11 +68,12 @@ button:hover {
 .container {
     display: grid;
     grid-template-areas: 
-    'playerInfo recentData recentData recentData'
-    'playerInfo matches matches matches'
-    'playerInfo matches matches matches'
-    'playerInfo matches matches matches'
-    'playerInfo matches matches matches';
+    'playerInfo recentData'
+    'playerInfo matches'
+    'playerInfo matches'
+    'playerInfo matches'
+    'playerInfo matches';
+    grid-template-columns: 1fr 3fr;
     /* gap: 10px; */
     /* background-color: #2196F3; */
     /* padding: 10px; */
