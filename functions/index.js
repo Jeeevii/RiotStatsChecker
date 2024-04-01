@@ -177,12 +177,12 @@ function getRanks(data){
 }
 
 function handleStatusCodes(status){
-    if(status == 404){
-        throw Error('Invalid RiotID+Tag');
+    if(status == 404 || status == 400){
+        throw Error('Invalid RiotID + Tag');
     }
     else if(status == 429){
         // setTimeout(120000); // 2 minute timeout
-        throw Error('Server is busy, Try again later.');
+        throw Error('Server is busy, try again later.');
     }
     else if(status == 401 || status == 403){
         throw Error('Unexpected Error');
