@@ -9,7 +9,7 @@ const app = express();
 const port = 3000;
 const numMatchesToTrack = 10;
 //Riot API Constants
-const api_key = 'RGAPI-c1af8532-b49a-47d4-8d3e-c99c3ed74172';
+const api_key = 'RGAPI-ac24d02d-a0f3-492c-98e4-d16a9e2e47ce';
 
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));

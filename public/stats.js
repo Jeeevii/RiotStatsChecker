@@ -55,7 +55,7 @@ const matchHistoryDiv = document.querySelector('.match-history-container');
 // Loop through all matches in matchStats array and create HTML elements for each match
 matchStats.forEach((match, index) => {
     var championImgNameURL = 'https://opgg-static.akamaized.net/meta/images/lol/14.6.1/champion/' + match.champion + '.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160,h_160&v=1710914129937'
-    const matchDiv = document.createElement('div');
+    let matchDiv = document.createElement('div');
     matchDiv.classList.add('match-entry');
     matchDiv.style.display = 'flex';
     matchDiv.style.justifyContent = 'space-between';
@@ -87,6 +87,7 @@ iconImg.src = summonerIconURL;
 iconImg.style.width = '60%';
 iconImg.style.height = '60%'; 
 iconImg.style.borderRadius = '50%'; 
+iconImg.classList = 'iconImg'
 document.querySelector('#playerIcon').appendChild(iconImg); // uploading profile icon
 
 // solo tier edge case
@@ -121,12 +122,19 @@ document.querySelector('#flexRank').innerHTML = "<h3> Ranked Flex " + flexTier +
 document.querySelector('#soloTier').appendChild(soloImg); // uploading solo rank
 document.querySelector('#flexTier').appendChild(flexImg); // uploading flex rank 
 // top 3 champs with masteries under, side by side
-document.querySelector('#champ1').innerHTML = "<img src='" + championIconURL + champ1_ID + ".png'>"; // top 3 champs icons
-document.querySelector('#champ2').innerHTML = "<img src='" + championIconURL + champ2_ID + ".png'>";
-document.querySelector('#champ3').innerHTML = "<img src='" + championIconURL + champ3_ID + ".png'>";
-document.querySelector('#champ1_mastery').innerHTML = "<h2>" + champ1_mastery +  "</h2>"; // top 3 champs mastery data
-document.querySelector('#champ2_mastery').innerHTML = "<h2>" + champ2_mastery +  "</h2>"; 
-document.querySelector('#champ3_mastery').innerHTML = "<h2>" + champ3_mastery +  "</h2>"; 
+document.querySelector('#champ1-img').innerHTML = "<img src='" + championIconURL + champ1_ID + ".png' style = 'max-width: 100%'>"; // top 3 champs icons
+document.querySelector('#champ2-img').innerHTML = "<img src='" + championIconURL + champ2_ID + ".png' style = 'max-width: 100%'>";
+document.querySelector('#champ3-img').innerHTML = "<img src='" + championIconURL + champ3_ID + ".png' style = 'max-width: 100%'>";
+// document.querySelector('#champ1-img').innerHTML = "<img src='" + championIconURL + champ1_ID + ".png'>"; // top 3 champs icons
+// document.querySelector('#champ2-img').innerHTML = "<img src='" + championIconURL + champ2_ID + ".png'>";
+// document.querySelector('#champ3-img').innerHTML = "<img src='" + championIconURL + champ3_ID + ".png'>";
+document.querySelector('#champ1-mastery').innerHTML = "<h2>" + champ1_mastery +  "</h2>"; // top 3 champs mastery data
+document.querySelector('#champ2-mastery').innerHTML = "<h2>" + champ2_mastery +  "</h2>"; 
+document.querySelector('#champ3-mastery').innerHTML = "<h2>" + champ3_mastery +  "</h2>"; 
+// document.querySelector('#champ1-data').style.width = '30%';
+// document.querySelector('#champ2-data').style.width = '30%';
+// document.querySelector('#champ3-data').style.width = '30%';
+
 
 
 // function referenced from gbt to swap between light and dark mode using local storage system
