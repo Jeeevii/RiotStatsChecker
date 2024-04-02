@@ -120,7 +120,7 @@ def getMatchStats():
 HASHMAP_DATA = {}
 # summoner, tag = 'Jeevi', '0001'
 summoner, tag = sys.argv[1], sys.argv[2]
-api_key = 'RGAPI-a20a9e41-4a88-448b-ab94-20aef94eabac'
+api_key = 'RGAPI-d1fd1a27-46d7-4a5d-861f-eee2487fa262'
 accountRequest = 'https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/'
 summonerRequest = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/'
 leagueRequest = 'https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/'
