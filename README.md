@@ -35,3 +35,5 @@ and calling user API --> Helps avoid using Riot API too much?
 5) Develop an API that allows developers to use this data of calculated winrates per champ
 6) Get Dates and Convert Dates to find which date(absolute: ie 4/1/2024 10:12:31 vs local: ie. 1 day ago, 12 hours ago)
 
+### Interested in the Project and want to made modifications and host in on your local server? 
+### Check it the [developer version](https://github.com/alexlee39/wpgg-devs?tab=readme-ov-file)
