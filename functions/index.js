@@ -10,7 +10,6 @@ const port = 3000;
 const numMatchesToTrack = 10;
 //Riot API Constants
 const api_key = require('./apikey'); //Update the api-key in apikey.js file
-
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
