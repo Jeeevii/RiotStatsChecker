@@ -178,14 +178,14 @@ function getRanks(data){
 
 function handleStatusCodes(status){
     if(status == 404 || status == 400){
-        throw Error('Invalid RiotID + Tag');
+        throw Error('Not Found');
     }
     else if(status == 429){
         // setTimeout(120000); // 2 minute timeout
-        throw Error('Server is busy, try again later.');
+        throw Error('Error');
     }
     else if(status == 401 || status == 403){
-        throw Error('Unexpected Error');
+        throw Error('Expired');
     }
     return; 
 }
