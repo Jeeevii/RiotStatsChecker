@@ -66,6 +66,7 @@ async function getPuuid(sName, sTag){
     const response = await fetch(`https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${sName}/${sTag}?api_key=${api_key}`);
     if(!response.ok){
         handleStatusCodes(response.status);
+        return;
     }
     let output = await response.json();
     return output;
@@ -75,6 +76,7 @@ async function getSummoner(puuid){
     const response = await fetch(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=${api_key}`);
     if(!response.ok){
         handleStatusCodes(response.status);
+        return;
     }
     let output = await response.json();
     return output;
@@ -84,6 +86,7 @@ async function getMasteryPts(puuid){
     const response = await fetch(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=${api_key}`);
     if(!response.ok){
         handleStatusCodes(response.status);
+        return;
     }
     let output = await response.json();
     return output;
@@ -93,6 +96,7 @@ async function getRank(summonerID){
     const response = await fetch(`https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerID}?api_key=${api_key}`);
     if(!response.ok){
         handleStatusCodes(response.status);
+        return;
     }
     let output = await response.json();
     return output;
@@ -102,6 +106,7 @@ async function getMatchIds(puuid, numMatches){
     const response = await fetch(`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids/?start=0&count=${numMatches}&api_key=${api_key}`);
     if(!response.ok){
         handleStatusCodes(response.status);
+        return;
     }
     let output = await response.json();
     return output;
@@ -111,6 +116,7 @@ async function getMatchData(matchID){
     const response = await fetch(`https://americas.api.riotgames.com/lol/match/v5/matches/${matchID}?api_key=${api_key}`);
     if(!response.ok){
         handleStatusCodes(response.status);
+        return;
     }
     let output = await response.json();
     return output;
@@ -192,6 +198,7 @@ function handleStatusCodes(status) {
         ERROR_HASHMAP['status'] = 'Error';
         ERROR_HASHMAP['message'] = 'An unexpected error occurred. Please try again.';
     }
-
-    return JSON.stringify(ERROR_HASHMAP);
+    ERROR_HASHMAP = JSON.stringify(ERROR_HASHMAP);
+    res.status(500).send(ERROR_HASHMAP);
+    return;
 }
