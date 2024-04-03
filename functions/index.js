@@ -175,16 +175,23 @@ function getRanks(data){
     return output;
 }
 
-function handleStatusCodes(status){
-    if(status == 404 || status == 400){
-        throw Error('Not Found');
+function handleStatusCodes(status) {
+    if (status == 200) {
+        return false;
     }
-    else if(status == 429){
-        // setTimeout(120000); // 2 minute timeout
-        throw Error('Error');
+    
+    let ERROR_HASHMAP = {};
+    
+    if (status == 404 || status == 400) {
+        ERROR_HASHMAP['status'] = 'Not Found';
+        ERROR_HASHMAP['message'] = 'Summoner not found. Please try again.';
+    }  else if (status == 401 || status == 403) {
+        ERROR_HASHMAP['status'] = 'Expired';
+        ERROR_HASHMAP['message'] = 'API Key is expired.';
+    } else {
+        ERROR_HASHMAP['status'] = 'Error';
+        ERROR_HASHMAP['message'] = 'An unexpected error occurred. Please try again.';
     }
-    else if(status == 401 || status == 403){
-        throw Error('Expired');
-    }
-    return; 
+
+    return JSON.stringify(ERROR_HASHMAP);
 }
