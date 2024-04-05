@@ -2,6 +2,10 @@
 
 Hello and welcome to the Riot Stats Checker project, WP.GG for short! This full stack project took me and my friends and about the entirety of our 1-week spring break to finish, but I'm very happy about our progress! Planning on adding more implementations later in the year, and potentially during summer break. 
 
+## Game Link
+
+firebase host: https://wpgg-6f4e2.web.app/index.html
+
 ## Developers 
 
 Jeevi - [Linkedlin](https://www.linkedin.com/in/jeevithan-mahenthran/)
