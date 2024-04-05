@@ -23,26 +23,30 @@ document.getElementById('searchButton').addEventListener('click', async function
     const apiCallURL = publicBaseURL+url;
     console.log(apiCallURL);
     const response = await fetch(apiCallURL);
-
+    //console.log('response:  ' + response.status);
     const data = await response.text();
-    console.log(data);
-    const parsedData = JSON.parse(data); // parses python hashmap into an object (hashmap in js)
-
-    if (parsedData.status === 'Not Found') {
-        document.getElementById('tempOutput').innerText = invalidSummonerMsg
-        return;
-    } 
-    else if (parsedData.status === 'Expired') {
-        document.getElementById('tempOutput').innerText = expiredAPIKey
-        return;
-    } 
-    else if (parsedData.status === 'Error') {
-        document.getElementById('tempOutput').innerText = errorMsg
-        return;
+    //console.log('data: ' + data);
+    if (response.status == 500){
+        if (response.status === 404) {
+            document.getElementById('tempOutput').innerText = invalidSummonerMsg
+            return;
+        } 
+        else if (response.status === 401) {
+            document.getElementById('tempOutput').innerText = expiredAPIKey
+            return;
+        } 
+        else if (response.status === 500) {
+            document.getElementById('tempOutput').innerText = errorMsg
+            return;
+        }
     }
-    // document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
-    // //Switch page at the end of getting data... 
-    changePage('stats.html', parsedData);
+    else {
+        const parsedData = JSON.parse(data); // parses python hashmap into an object (hashmap in js)
+        console.log('parsedData: ' + data);
+        // document.getElementById('tempOutput').innerText = data; // displaying the returned data on front end
+        // //Switch page at the end of getting data... 
+        changePage('stats.html', parsedData);
+    }
 });
 
 

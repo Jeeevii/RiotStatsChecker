@@ -1,4 +1,5 @@
 // const {onRequest} = require("firebase-functions/v2/https");
+process.cwd();
 const logger = require("firebase-functions/logger");
 const functions = require("firebase-functions");
 const cors = require('cors');
@@ -185,20 +186,19 @@ function handleStatusCodes(status) {
     if (status == 200) {
         return false;
     }
-    
     let ERROR_HASHMAP = {};
-    
     if (status == 404 || status == 400) {
         ERROR_HASHMAP['status'] = 'Not Found';
-        ERROR_HASHMAP['message'] = 'Summoner not found. Please try again.';
+        ERROR_HASHMAP = JSON.stringify(ERROR_HASHMAP);
+        res.status(404).send(ERROR_HASHMAP);
     }  else if (status == 401 || status == 403) {
         ERROR_HASHMAP['status'] = 'Expired';
-        ERROR_HASHMAP['message'] = 'API Key is expired.';
+        ERROR_HASHMAP = JSON.stringify(ERROR_HASHMAP);
+        res.status(401).send(ERROR_HASHMAP);
     } else {
         ERROR_HASHMAP['status'] = 'Error';
-        ERROR_HASHMAP['message'] = 'An unexpected error occurred. Please try again.';
+        ERROR_HASHMAP = JSON.stringify(ERROR_HASHMAP);
+        res.status(500).send(ERROR_HASHMAP);
     }
-    ERROR_HASHMAP = JSON.stringify(ERROR_HASHMAP);
-    res.status(500).send(ERROR_HASHMAP);
     return;
 }
