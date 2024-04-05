@@ -35,7 +35,7 @@ document.getElementById('searchButton').addEventListener('click', async function
             document.getElementById('tempOutput').innerText = expiredAPIKey
             return;
         } 
-        else if (response.status === 500) {
+        else {
             document.getElementById('tempOutput').innerText = errorMsg
             return;
         }
