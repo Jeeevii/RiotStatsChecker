@@ -1,2 +1,2 @@
-const api_key = "RGAPI-3342049a-b2d2-4b5e-8c2d-fa0f9bac5d7f";
+const api_key = "RGAPI-bf65f373-5c55-4b1b-aebe-02a3fda4b98c";
 module.exports = api_key;
