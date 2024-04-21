@@ -1,19 +1,23 @@
 {
-  "name": "riotstatschecker",
-  "version": "1.0.0",
-  "description": "",
-  "main": "script.js",
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
   "dependencies": {
-    "express": "^4.19.2",
-    "firebase": "^10.6.0",
-    "nvm": "^0.0.4",
-    "require": "^0.4.4",
-    "tools": "^0.0.0"
-  }
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
 }
