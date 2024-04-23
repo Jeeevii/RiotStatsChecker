@@ -5,6 +5,7 @@ Hello and welcome to the Riot Stats Checker project, WP.GG for short! This full 
 ## Game Link
 
 firebase host: https://wpgg-6f4e2.web.app/index.html
+
 github pages host: https://jeeevii.github.io/RiotStatsChecker/ 
 
 ## Developers 
