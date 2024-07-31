@@ -6,11 +6,15 @@ Hello and welcome to the Riot Stats Checker project, WP.GG for short! This full 
 
 firebase host: https://wpgg-6f4e2.web.app/index.html
 
+github pages host: https://jeeevii.github.io/RiotStatsChecker/public/index.html
+
 ## Developers 
 
 Jeevi - [Linkedlin](https://www.linkedin.com/in/jeevithan-mahenthran/)
-Alex - [Linkedlin](https://www.linkedin.com/in/alexander-lee-855a96236/)
-Kevin - [Linkedlin](https://www.linkedin.com/in/hanlin-huang-6aa4131ba/) 
+
+Alex - [Linkedlin](https://www.linkedin.com/in/alexander-lee-855a96236/) 
+
+Kevin - [Linkedlin](https://www.linkedin.com/in/hanlin-huang-6aa4131ba/)  
 
 ## About the Project
 

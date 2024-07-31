@@ -25,9 +25,9 @@ document.getElementById('searchButton').addEventListener('click', async function
     const response = await fetch(apiCallURL);
     //console.log('response:  ' + response.status);
     const data = await response.text();
-    //console.log('data: ' + data);
+    //console.log('data: ' + data);s
     if (response.status == 500){
-        if (response.status === 404) {
+        if (response.status === 404) { // need to change, this is monkey brain idk how this go here. 
             document.getElementById('tempOutput').innerText = invalidSummonerMsg
             return;
         } 
